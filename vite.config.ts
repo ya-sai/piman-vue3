@@ -9,6 +9,7 @@ const buildDemoConfig = {
   plugins: [
     vue()
   ],
+  base: '/piman-vue3/demo',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
