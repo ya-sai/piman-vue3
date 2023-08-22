@@ -40,6 +40,3 @@ const showPanel = computed(() => {
   return props.name === self.parent.props.modelValue
 })
 </script>
-
-<style lang="scss" scoped>
-</style>

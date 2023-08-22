@@ -1,6 +1,6 @@
 import type { App, Component, ComputedOptions, MethodOptions } from "vue";
 import * as components from ".";
-import '@/assets/style.scss'
+import '@/assets/style.css'
 
 const componentList: {[key: string]: Component<any, any, any, ComputedOptions, MethodOptions>} = components
 const PimanComponents = {

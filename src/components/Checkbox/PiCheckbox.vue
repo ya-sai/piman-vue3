@@ -85,6 +85,3 @@ onMounted(()=>{
   fixId.value = props.id ? `pi-checkbox-${props.id}` : `pi-checkbox-${generateId()}`
 })
 </script>
-
-<style lang="scss" scoped>
-</style>

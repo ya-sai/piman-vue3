@@ -1,5 +1,6 @@
 <template>
-  <article>
+  <div>
+    <a href="/">a</a>
     <section>
       <h3>大小</h3>
       <pi-button size="small">小按鈕</pi-button>
@@ -33,16 +34,16 @@
       <h3>載入中</h3>
       <pi-button :loading="true"></pi-button>
       <pi-button :loading="true">預設按鈕</pi-button>
-      <pi-button theme="primary" :loading="true">主題色</pi-button>
+      <pi-button theme="primary" size="small" :loading="true">主題色</pi-button>
       <pi-button theme="success" :loading="true">成功</pi-button>
       <pi-button theme="warning" :loading="true">注意</pi-button>
       <pi-button theme="danger" :loading="true">警告</pi-button>
       <pi-button theme="primary-ghost" :loading="true">主題色</pi-button>
       <pi-button theme="success-ghost" :loading="true">成功</pi-button>
       <pi-button theme="warning-ghost" :loading="true">注意</pi-button>
-      <pi-button theme="danger-ghost" :loading="true">警告</pi-button>
+      <pi-button theme="danger-ghost" size="large" :loading="true">警告</pi-button>
     </section>
-  </article>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -51,6 +52,3 @@
 // import PiButton from '@/components/Button/PiButton.vue'
 
 </script>
-
-<style lang="scss" scoped>
-</style>

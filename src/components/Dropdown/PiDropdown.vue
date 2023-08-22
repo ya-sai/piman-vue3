@@ -98,6 +98,3 @@ const listboxOpen = ref(false)
 const trap = ref(null)
 const fixId = ref('')
 </script>
-
-<style lang="scss" scoped>
-</style>

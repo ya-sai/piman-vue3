@@ -31,6 +31,3 @@
 // import { PiAccordion, PiAccordionItem } from "/dist/piman-vue3.es";
 
 </script>
-
-<style lang="scss" scoped>
-</style>

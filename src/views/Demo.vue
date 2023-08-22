@@ -14,7 +14,6 @@ const activeTab = ref('button')
 </script>
 
 <template>
-  
   <pi-tabs v-model="activeTab">
     <pi-tab-panel name="button" label="按鈕"><DemoButton/></pi-tab-panel>
     <pi-tab-panel name="checkbox" label="核取方塊"><DemoCheckbox/></pi-tab-panel>

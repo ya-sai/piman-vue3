@@ -29,6 +29,3 @@ const onClearCheckbox = () => {
   valCheckbox.value = []
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

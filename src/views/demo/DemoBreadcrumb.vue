@@ -27,6 +27,3 @@ const path = ref([
   { title: '現在頁面'},
 ])
 </script>
-
-<style lang="scss" scoped>
-</style>
