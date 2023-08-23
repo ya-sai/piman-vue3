@@ -36,6 +36,10 @@ textarea {
   Single Class
 *************************/
 
+.no-padding {
+  padding: 0!important;
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;

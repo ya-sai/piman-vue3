@@ -57,14 +57,14 @@ defineProps({
   }
   &.pi-btn--small {
     padding: var(--spacing-xxs) var(--spacing-xs);
-    font-size: 0.75rem;
+    font-size: 1rem;
     & .pi-btn-loading {
       vertical-align: baseline;
-      width: 0.75rem;
-      height: 0.75rem;
+      width: 1rem;
+      height: 1rem;
       & span {
-        width: 0.75rem;
-        height: 0.75rem;
+        width: 1rem;
+        height: 1rem;
       }
     }
   }
@@ -272,5 +272,4 @@ defineProps({
     transform: rotate(360deg);
   }
 }
-
 </style>

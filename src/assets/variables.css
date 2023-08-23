@@ -180,6 +180,14 @@
   --button-default-hover-bg: var(--color-gray-100);
   --button-default-active-bg: var(--color-gray-200);
 
+  /* Accordion */
+  --accordion-header-color: var(--article-title-color);
+  --accordion-header-bg: var(--color-white);
+  --accordion-bar-color: var(--color-primary-600);
+  --accordion-active-bar-color: var(--color-warning-500);
+  --accordion-icon-color: var(--color-primary-600);
+  --accordion-content-color: var(--article-paragraph-color);
+  --accordion-content-bg: var(--color-gray-100);
 }
 
 
@@ -244,7 +252,7 @@
     --color-focus: var(--color-yellow-200);
     --color-visited: var(--color-purple-300);
     --color-placeholder: var(--color-gray-300);
-    --color-border: var(--color-gray-300);
+    --color-border: var(--color-gray-700);
 
     /* Article */
     --article-title-color: var(--color-gray-100);
@@ -264,5 +272,14 @@
     --button-default-bg: var(--color-white);
     --button-default-hover-bg: var(--color-gray-200);
     --button-default-active-bg: var(--color-gray-300);
+
+    /* Accordion */
+    --accordion-header-color: var(--article-title-color);
+    --accordion-header-bg: var(--color-black);
+    --accordion-bar-color: var(--color-primary-600);
+    --accordion-active-bar-color: var(--color-warning-500);
+    --accordion-content-color: var(--article-paragraph-color);
+    --accordion-content-bg: var(--color-gray-900);
+    --accordion-icon-color: var(--color-primary-200);
   }
 }

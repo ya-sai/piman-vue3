@@ -7,7 +7,15 @@
           內容1
         </pi-accordion-item>
         <pi-accordion-item open>
-          預設打開
+          內容2 預設打開
+          <pi-accordion>
+            <pi-accordion-item>
+              內容2-1
+            </pi-accordion-item>
+            <pi-accordion-item open>
+              內容2-1 預設打開
+            </pi-accordion-item>
+          </pi-accordion>
         </pi-accordion-item>
       </pi-accordion>
     </section>
