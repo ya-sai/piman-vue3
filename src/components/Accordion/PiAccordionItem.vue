@@ -140,7 +140,7 @@ onMounted(()=>{
       }
     }
     &:focus {
-      box-shadow: 0 0 0 3px oklch(var(--color-focusr));
+      box-shadow: 0 0 0 3px oklch(var(--color-focus));
       @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none){
         &:before {
           height: 100%;
