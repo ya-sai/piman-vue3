@@ -1,5 +1,6 @@
 <template>
-  <article>
+  <h2>
+    <h2>Accordion</h2>
     <section>
       <h3>基本</h3>
       <pi-accordion>
@@ -31,7 +32,7 @@
         </pi-accordion-item>
       </pi-accordion>
     </section>
-  </article>
+  </h2>
 </template>
 
 <script lang="ts" setup>
