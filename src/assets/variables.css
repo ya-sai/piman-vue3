@@ -210,6 +210,15 @@
   --checkbox-border-error-color: var(--color-danger-500);
   --checkbox-icon-color: var(--color-gray-800);
   --checkbox-inner-icon-color: var(--color-primary-500);
+
+  /* Dialog/Card */
+  --dialog-header-close-btn-color: var(--color-primary-600);
+  --dialog-header-title-color: var(--article-title-color);
+  --dialog-content-color: var(--article-paragraph-color);
+  --dialog-header-bg: var(--color-white);
+  --dialog-content-bg: var(--color-white);
+  --dialog-footer-bg: var(--color-white);
+  --dialog-border-color: var(--color-border);
 }
 
 
@@ -319,5 +328,14 @@
     --checkbox-border-error-color: var(--color-danger-500);
     --checkbox-icon-color: var(--color-gray-400);
     --checkbox-inner-icon-color: var(--color-primary-500);
+
+    /* Dialog/Card */
+    --dialog-header-close-btn-color: var(--color-white);
+    --dialog-header-title-color: var(--article-title-color);
+    --dialog-content-color: var(--article-paragraph-color);
+    --dialog-header-bg: var(--color-black);
+    --dialog-content-bg: var(--color-black);
+    --dialog-footer-bg: var(--color-black);
+    --dialog-border-color: var(--color-border);
   }
 }
