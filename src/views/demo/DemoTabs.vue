@@ -1,5 +1,6 @@
 <template>
-  <article>
+  <div>
+    <h2>Tabs</h2>
     <section>
       <h3>基本</h3>
       <pi-tabs v-model="demoTabs">
@@ -23,7 +24,7 @@
         <pi-tab-panel name="second-tab3" label="Second tab3" affix-icon="fas fa-search">This is the content of the second tab</pi-tab-panel>
       </pi-tabs>
     </section>
-  </article>
+  </div>
 </template>
 
 <script lang="ts" setup>

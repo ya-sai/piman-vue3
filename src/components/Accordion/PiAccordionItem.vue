@@ -74,8 +74,8 @@ onMounted(()=>{
   word-break: break-all;
   word-break: break-word;
   &.pi-accordion__item--open {
-    & .pi-accordion__item-header {
-      >button {
+    &>.pi-accordion__item-header {
+      &>button {
         &:after {
           top: calc(50% - 4px);
           transform: rotate(225deg);
@@ -102,7 +102,7 @@ onMounted(()=>{
     color: oklch(var(--accordion-header-color));
     background: oklch(var(--accordion-header-bg));
     border: none;
-    >div {
+    &>div {
       width: 100%;
     }
     &:before {
@@ -140,7 +140,7 @@ onMounted(()=>{
       }
     }
     &:focus {
-      box-shadow: 0 0 0 3px oklch(var(--color-focus));
+      box-shadow: inset 0 0 0 3px oklch(var(--color-focus));
       @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none){
         &:before {
           height: 100%;

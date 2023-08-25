@@ -1,5 +1,6 @@
 <template>
-  <article>
+  <div>
+    <h2>Checkbox</h2>
     <section>
       <h3>基本</h3>
       <pi-checkbox value="1" v-model="valCheckbox">核取方塊 1</pi-checkbox>
@@ -14,7 +15,7 @@
       <pi-checkbox value="3" v-model="valCheckbox" disabled>核取方塊 3</pi-checkbox>
       <div>{{ valCheckbox }}  <pi-button size="small" @click="onClearCheckbox">Clear</pi-button></div>
     </section>
-  </article>
+  </div>
 </template>
 
 <script lang="ts" setup>

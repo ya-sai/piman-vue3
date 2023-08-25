@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="/">a</a>
+    <h2>Button</h2>
     <section>
       <h3>大小</h3>
       <pi-button size="small">小按鈕</pi-button>

@@ -23,7 +23,7 @@ a {
 button {
   &:focus-within {
     outline: none;
-    box-shadow: 0 0 0 3px oklch(var(--color-focus));
+    box-shadow: inset 0 0 0 3px oklch(var(--color-focus));
   }
 }
 

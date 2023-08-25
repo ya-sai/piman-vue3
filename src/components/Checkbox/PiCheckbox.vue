@@ -90,14 +90,14 @@ onMounted(()=>{
 .pi-checkbox-label {
   position: relative;
   font-size: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 0.5rem;
+  margin-right: var(--spacing-m);
+  margin-bottom: var(--spacing-xs);
   display: inline-block;
   vertical-align: top;
   & .pi-checkbox__inner {
     display: inline-block;
     vertical-align: top;
-    padding-left: 1.5rem;
+    padding-left: var(--spacing-l);
     color: oklch(var(--checkbox-label-color));
     line-height: 1.5;
     &:before {
@@ -162,7 +162,7 @@ onMounted(()=>{
   height: 1.125rem;
   background-color: oklch(var(--checkbox-square-bg));
   border: 1px solid oklch(var(--checkbox-square-border-color));
-  border-radius: 0.25rem;
+  border-radius: var(--radius);
   transition: background-color 160ms ease-in, border-color 160ms ease-in, box-shadow 160ms ease-in;
   &:hover {
     color: oklch(var(--checkbox-hover-color));

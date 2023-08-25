@@ -80,6 +80,8 @@
   /* Distance & shape */
   --radius: 0.25rem;
   --radius-inner: 0.1875rem;
+
+  --spacing-xxxs: 0.125rem;
   --spacing-xxs: 0.25rem;
   --spacing-xs: 0.5rem;
   --spacing-s: 0.75rem;
@@ -180,6 +182,10 @@
   --accordion-icon-color: var(--color-primary-600);
   --accordion-content-color: var(--article-paragraph-color);
   --accordion-content-bg: var(--color-gray-100);
+
+  /* Badge */
+  --color-badge-bg: var(--color-warning-100);
+  --color-badge-color:  var(--color-black);
 
   /* Button */
   --button-flat-color: var(--color-white);

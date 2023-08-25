@@ -40,3 +40,15 @@ const showPanel = computed(() => {
   return props.name === self.parent.props.modelValue
 })
 </script>
+
+<style scoped>
+.pitabs-panel {
+  padding: 1rem;
+  &:focus {
+    outline: 3px solid oklch(var(--color-focus));
+  }
+  &.nopadding {
+    padding: 0;
+  }
+}
+</style>

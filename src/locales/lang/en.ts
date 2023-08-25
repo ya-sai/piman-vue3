@@ -17,6 +17,9 @@ const translation = {
   "form":{
     "required": "required"
   },
+  "badge":{
+    "pre": " info:"
+  },
   "breadcrumb":{
     "current_page":"current page"
   },
