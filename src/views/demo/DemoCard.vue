@@ -1,5 +1,6 @@
 <template>
-  <article>
+  <div>
+    <h2>Card</h2>
     <section>
       <h3>基本</h3>
       <pi-card>
@@ -74,7 +75,7 @@
         </template>
       </pi-card>
     </section>
-  </article>
+  </div>
 </template>
 
 <script lang="ts" setup>

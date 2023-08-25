@@ -24,5 +24,21 @@ const activeTab = ref('button')
   </pi-tabs>
 </template>
 
-<style scoped>
+<style>
+body {
+  padding: 1rem;
+}
+h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+section {
+  margin-bottom: 2rem;
+}
 </style>

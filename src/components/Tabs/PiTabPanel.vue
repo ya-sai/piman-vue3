@@ -42,9 +42,9 @@ const showPanel = computed(() => {
 </script>
 
 <style scoped>
-.pitabs-panel {
-  padding: 1rem;
-  &:focus {
+.pi-tabs-panel {
+  padding: var(--spacing-m);
+  &:focus-within {
     outline: 3px solid oklch(var(--color-focus));
   }
   &.nopadding {

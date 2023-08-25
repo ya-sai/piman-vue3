@@ -233,6 +233,11 @@ defineProps({
       color: oklch(var(--color-danger-600));
     }
   }
+  ~.pi-btn {
+    margin-left: var(--spacing-m);
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+  }
 }
 
 .pi-btn-loading {

@@ -74,8 +74,8 @@ onMounted(()=>{
   word-break: break-all;
   word-break: break-word;
   &.pi-accordion__item--open {
-    &>.pi-accordion__item-header {
-      &>button {
+    >.pi-accordion__item-header {
+      >button {
         &:after {
           top: calc(50% - 4px);
           transform: rotate(225deg);
@@ -87,11 +87,11 @@ onMounted(()=>{
 
 .pi-accordion__item-header {
   position: relative;
-  &>button {
+  >button {
     position: relative;
     display: block;
     width: 100%;
-    padding: 1rem calc(1rem + 2.5rem) 1rem 1rem;
+    padding: var(--spacing-m) var(--spacing-xxl) var(--spacing-m) var(--spacing-m);
     font-size: 1.125rem;
     font-weight: bold;
     display: flex;
@@ -102,7 +102,7 @@ onMounted(()=>{
     color: oklch(var(--accordion-header-color));
     background: oklch(var(--accordion-header-bg));
     border: none;
-    &>div {
+    >div {
       width: 100%;
     }
     &:before {
@@ -151,7 +151,7 @@ onMounted(()=>{
 }
 
 .pi-accordion__item-container {
-  padding: 1rem;
+  padding: var(--spacing-m);
   background-color: oklch(var(--accordion-content-bg));
   color: oklch(var(--accordion-content-color));
   line-height: 1.5rem;
