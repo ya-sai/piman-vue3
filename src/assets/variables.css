@@ -172,14 +172,6 @@
   --link-active-color: var(--color-primary-700);
   --link-visited-color: var(--color-visited);
 
-  /* Button */
-  --button-flat-color: var(--color-white);
-  --button-ghost-bg: var(--color-white);
-  --button-default-color: var(--color-black);
-  --button-default-bg: var(--color-white);
-  --button-default-hover-bg: var(--color-gray-100);
-  --button-default-active-bg: var(--color-gray-200);
-
   /* Accordion */
   --accordion-header-color: var(--article-title-color);
   --accordion-header-bg: var(--color-white);
@@ -188,6 +180,30 @@
   --accordion-icon-color: var(--color-primary-600);
   --accordion-content-color: var(--article-paragraph-color);
   --accordion-content-bg: var(--color-gray-100);
+
+  /* Button */
+  --button-flat-color: var(--color-white);
+  --button-ghost-bg: var(--color-white);
+  --button-default-color: var(--color-black);
+  --button-default-bg: var(--color-white);
+  --button-default-hover-bg: var(--color-gray-100);
+  --button-default-active-bg: var(--color-gray-200);
+
+  /* Checkbox */
+  --checkbox-square-bg: var(--color-white);
+  --checkbox-square-active-bg: var(--color-primary-100);
+  --checkbox-square-border-color: var(--color-border);
+  --checkbox-square-hover-border-color: var(--color-primary-500);
+  --checkbox-square-active-border-color: var(--color-primary-500);
+  --checkbox-square-error-bg: var(--color-danger-100);
+  --checkbox-label-color: var(--color-gray-900);
+  --checkbox-label-hover-color: var(--color-primary-600);
+  --checkbox-label-active-color: var(--color-primary-600);
+  --checkbox-label-focus-color: var(--color-primary-600);
+  --checkbox-label-error-color: var(--color-danger-500);
+  --checkbox-border-error-color: var(--color-danger-500);
+  --checkbox-icon-color: var(--color-gray-800);
+  --checkbox-inner-icon-color: var(--color-primary-500);
 }
 
 
@@ -265,14 +281,6 @@
     --link-active-color: var(--color-primary-100);
     --link-visited-color: var(--color-visited);
 
-    /* Button */
-    --button-flat-color: var(--color-white);
-    --button-ghost-bg: var(--color-white);
-    --button-default-color: var(--color-black);
-    --button-default-bg: var(--color-white);
-    --button-default-hover-bg: var(--color-gray-200);
-    --button-default-active-bg: var(--color-gray-300);
-
     /* Accordion */
     --accordion-header-color: var(--article-title-color);
     --accordion-header-bg: var(--color-black);
@@ -281,5 +289,29 @@
     --accordion-content-color: var(--article-paragraph-color);
     --accordion-content-bg: var(--color-gray-900);
     --accordion-icon-color: var(--color-primary-200);
+
+    /* Button */
+    --button-flat-color: var(--color-white);
+    --button-ghost-bg: var(--color-white);
+    --button-default-color: var(--color-black);
+    --button-default-bg: var(--color-white);
+    --button-default-hover-bg: var(--color-gray-200);
+    --button-default-active-bg: var(--color-gray-300);
+
+    /* Checkbox */
+    --checkbox-square-bg: var(--color-white);
+    --checkbox-square-active-bg: var(--color-primary-100);
+    --checkbox-square-border-color: var(--color-white);
+    --checkbox-square-hover-border-color: var(--color-primary-500);
+    --checkbox-square-active-border-color: var(--color-primary-500);
+    --checkbox-square-error-bg: var(--color-danger-100);
+    --checkbox-label-color: var(--color-gray-100);
+    --checkbox-label-hover-color: var(--color-primary-200);
+    --checkbox-label-active-color: var(--color-primary-200);
+    --checkbox-label-focus-color: var(--color-primary-200);
+    --checkbox-label-error-color: var(--color-danger-200);
+    --checkbox-border-error-color: var(--color-danger-500);
+    --checkbox-icon-color: var(--color-gray-400);
+    --checkbox-inner-icon-color: var(--color-primary-500);
   }
 }
