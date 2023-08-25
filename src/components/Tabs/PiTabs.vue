@@ -114,7 +114,7 @@ const toKebabCase = (value:string) => {
     width: 100%;
     white-space: nowrap;
     overflow: auto;
-    padding: --spacing-xxs var(--spacing-xs) 0;
+    padding: var(--spacing-xxs) var(--spacing-xs) 0;
     margin: 0;
   }
   & .pi-tabs__item {
