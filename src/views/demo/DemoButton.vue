@@ -2,46 +2,83 @@
   <div>
     <h2>Button</h2>
     <section>
-      <h3>大小</h3>
-      <pi-button size="small">小按鈕</pi-button>
-      <pi-button>預設按鈕</pi-button>
-      <pi-button size="large">大按鈕</pi-button>
+      <h3>Size</h3>
+      <pi-button size="small">Default</pi-button>
+      <pi-button>Default</pi-button>
+      <pi-button size="large">Default</pi-button>
     </section>
     <section>
-      <h3>風格</h3>
-      <pi-button theme="primary">主題色</pi-button>
-      <pi-button theme="success">成功</pi-button>
-      <pi-button theme="warning">注意</pi-button>
-      <pi-button theme="danger">警告</pi-button>
-      <pi-button theme="primary-ghost">主題色</pi-button>
-      <pi-button theme="success-ghost">成功</pi-button>
-      <pi-button theme="warning-ghost">注意</pi-button>
-      <pi-button theme="danger-ghost">警告</pi-button>
+      <h3>Theme</h3>
+      <pi-button theme="primary">Primary</pi-button>
+      <pi-button theme="success">Success</pi-button>
+      <pi-button theme="warning">Warning</pi-button>
+      <pi-button theme="danger">Danger</pi-button>
+      <pi-button theme="primary-ghost">Primary</pi-button>
+      <pi-button theme="success-ghost">Success</pi-button>
+      <pi-button theme="warning-ghost">Warning</pi-button>
+      <pi-button theme="danger-ghost">Danger</pi-button>
     </section>
     <section>
-      <h3>停用</h3>
-      <pi-button disabled>預設按鈕</pi-button>
-      <pi-button theme="primary" disabled>主題色</pi-button>
-      <pi-button theme="success" disabled>成功</pi-button>
-      <pi-button theme="warning" disabled>注意</pi-button>
-      <pi-button theme="danger" disabled>警告</pi-button>
-      <pi-button theme="primary-ghost" disabled>主題色</pi-button>
-      <pi-button theme="success-ghost" disabled>成功</pi-button>
-      <pi-button theme="warning-ghost" disabled>注意</pi-button>
-      <pi-button theme="danger-ghost" disabled>警告</pi-button>
+      <h3>Enhance Accessibility</h3>
+      <pi-button theme="primary" a11y>Primary</pi-button>
+      <pi-button theme="success" a11y>Success</pi-button>
+      <pi-button theme="warning" a11y>Warning</pi-button>
+      <pi-button theme="danger" a11y>Danger</pi-button>
+      <pi-button theme="primary-ghost" a11y>Primary</pi-button>
+      <pi-button theme="success-ghost" a11y>Success</pi-button>
+      <pi-button theme="warning-ghost" a11y>Warning</pi-button>
+      <pi-button theme="danger-ghost" a11y>Danger</pi-button>
     </section>
     <section>
-      <h3>載入中</h3>
-      <pi-button :loading="true"></pi-button>
-      <pi-button :loading="true">預設按鈕</pi-button>
-      <pi-button theme="primary" size="small" :loading="true">主題色</pi-button>
-      <pi-button theme="success" :loading="true">成功</pi-button>
-      <pi-button theme="warning" :loading="true">注意</pi-button>
-      <pi-button theme="danger" :loading="true">警告</pi-button>
-      <pi-button theme="primary-ghost" :loading="true">主題色</pi-button>
-      <pi-button theme="success-ghost" :loading="true">成功</pi-button>
-      <pi-button theme="warning-ghost" :loading="true">注意</pi-button>
-      <pi-button theme="danger-ghost" size="large" :loading="true">警告</pi-button>
+      <h3>Disabled</h3>
+      <pi-button size="small" disabled>Default</pi-button>
+      <pi-button disabled>Default</pi-button>
+      <pi-button size="large" disabled>Default</pi-button>
+      <br/>
+      <pi-button theme="primary" disabled>Primary</pi-button>
+      <pi-button theme="success" disabled>Success</pi-button>
+      <pi-button theme="warning" disabled>Warning</pi-button>
+      <pi-button theme="danger" disabled>Danger</pi-button>
+      <pi-button theme="primary-ghost" disabled>Primary</pi-button>
+      <pi-button theme="success-ghost" disabled>Success</pi-button>
+      <pi-button theme="warning-ghost" disabled>Warning</pi-button>
+      <pi-button theme="danger-ghost" disabled>Danger</pi-button>
+      <br>
+      <pi-button theme="primary" a11y disabled>Primary</pi-button>
+      <pi-button theme="success" a11y disabled>Success</pi-button>
+      <pi-button theme="warning" a11y disabled>Warning</pi-button>
+      <pi-button theme="danger" a11y disabled>Danger</pi-button>
+      <pi-button theme="primary-ghost" a11y disabled>Primary</pi-button>
+      <pi-button theme="success-ghost" a11y disabled>Success</pi-button>
+      <pi-button theme="warning-ghost" a11y disabled>Warning</pi-button>
+      <pi-button theme="danger-ghost" a11y disabled>Danger</pi-button>
+    </section>
+    <section>
+      <h3>Loading</h3>
+      <pi-button size="small" loading></pi-button>
+      <pi-button loading></pi-button>
+      <pi-button size="large" loading></pi-button>
+      <pi-button size="small" loading>Loading</pi-button>
+      <pi-button loading>Loading</pi-button>
+      <pi-button size="large" loading>Loading</pi-button>
+      <br/>
+      <pi-button theme="primary" loading>Primary</pi-button>
+      <pi-button theme="success" loading>Success</pi-button>
+      <pi-button theme="warning" loading>Warning</pi-button>
+      <pi-button theme="danger" loading>Danger</pi-button>
+      <pi-button theme="primary-ghost" loading>Primary</pi-button>
+      <pi-button theme="success-ghost" loading>Success</pi-button>
+      <pi-button theme="warning-ghost" loading>Warning</pi-button>
+      <pi-button theme="danger-ghost" loading>Danger</pi-button>
+      <br>
+      <pi-button theme="primary" loading a11y>Primary</pi-button>
+      <pi-button theme="success" loading a11y>Success</pi-button>
+      <pi-button theme="warning" loading a11y>Warning</pi-button>
+      <pi-button theme="danger" loading a11y>Danger</pi-button>
+      <pi-button theme="primary-ghost" loading a11y>Primary</pi-button>
+      <pi-button theme="success-ghost" loading a11y>Success</pi-button>
+      <pi-button theme="warning-ghost" loading a11y>Warning</pi-button>
+      <pi-button theme="danger-ghost" loading a11y>Danger</pi-button>
     </section>
   </div>
 </template>
