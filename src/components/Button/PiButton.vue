@@ -99,7 +99,7 @@ defineProps({
       border-color: oklch(var(--color-primary-600));
     }
     &.a11y {
-      text-shadow: 0 0 4px oklch(var(--color-black) / 0.4);
+      text-shadow: 0 0 0.25rem oklch(var(--color-black) / 0.4);
       background-image: 
         linear-gradient(oklch(var(--color-primary-400) / 0.4) 0.125rem, transparent 0.125rem),
         linear-gradient(to right, oklch(var(--color-primary-400) / 0.4) 0.125rem,  oklch(var(--color-primary-500)) 0.125rem);
@@ -139,7 +139,7 @@ defineProps({
       border-color: oklch(var(--color-success-600));
     }
     &.a11y {
-      text-shadow: 0 0 4px oklch(var(--color-black) / 0.4);
+      text-shadow: 0 0 0.25rem oklch(var(--color-black) / 0.4);
       background: 
         repeating-linear-gradient( 
           45deg,
@@ -193,7 +193,7 @@ defineProps({
       
     }
     &.a11y {
-      text-shadow: 0 0 4px oklch(var(--color-black) / 0.4);
+      text-shadow: 0 0 0.25rem oklch(var(--color-black) / 0.4);
       background-image:  
         radial-gradient( oklch(var(--color-warning-400)) 0.1rem, transparent 0.1rem),
         radial-gradient( oklch(var(--color-warning-400)) 0.1rem, oklch(var(--color-warning-500)) 0.1rem);
@@ -233,7 +233,7 @@ defineProps({
       border-color: oklch(var(--color-danger-600));
     }
     &.a11y {
-      text-shadow: 0 0 4px oklch(var(--color-black) / 0.4);
+      text-shadow: 0 0 0.25rem oklch(var(--color-black) / 0.4);
       background-image: 
         linear-gradient(135deg, oklch(var(--color-danger-400) / 0.6) 25%, transparent 25%),
         linear-gradient(225deg, oklch(var(--color-danger-400) / 0.6) 25%, transparent 25%),
