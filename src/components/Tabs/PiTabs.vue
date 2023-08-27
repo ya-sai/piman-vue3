@@ -27,9 +27,9 @@
           @click="handleClickTab(tab.name, index)"
           @keydown="handleKeyboardEvent($event)"
         >
-          <span v-if="tab.prefixIcon" class="tab-icon"><i :class="tab.prefixIcon"></i></span>
+          <span v-if="tab.prefix"  :class="['tab-prefix', tab.prefix]"></span>
           <span>{{ tab.label }}</span>
-          <span v-if="tab.affixIcon" class="tab-icon"><i :class="tab.affixIcon"></i></span>
+          <span v-if="tab.affix" :class="['tab-affix', tab.affix]"></span>
           <span v-if="tab.badge" class="badge" :aria-label="t('badge.pre') + tab.badge ">{{ tab.badge }}</span>
         </pi-button>
       </li>
@@ -145,8 +145,13 @@ const toKebabCase = (value:string) => {
         color: oklch(var(--color-badge-color));
         font-size: 0.75rem;
       }
-      & .tab-icon {
-        margin: 0 var(--spacing-xxs);
+      & span {
+        &.tab-prefix {
+          margin-right: var(--spacing-xxs);
+        }
+        &.tab-affix {
+          margin-left: var(--spacing-xxs);
+        }
       }
     }
     

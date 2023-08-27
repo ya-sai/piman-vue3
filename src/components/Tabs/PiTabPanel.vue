@@ -7,7 +7,8 @@
   tabindex="0"
   :class="[
     'pi-tabs-panel',
-    showPanel ? 'pi-tabs-panel--selected': ''
+    showPanel ? 'pi-tabs-panel--selected': '',
+    nopadding ? 'no-padding' : ''
   ]"
 >
   <slot></slot>
@@ -31,7 +32,8 @@ const props = defineProps({
   affixIcon: String,
   badge: {
     type: String || Number,
-  }
+  },
+  nopadding: Boolean
 })
 
 const showPanel = computed(() => {
@@ -46,9 +48,6 @@ const showPanel = computed(() => {
   padding: var(--spacing-m);
   &:focus-within {
     outline: 3px solid oklch(var(--color-focus));
-  }
-  &.nopadding {
-    padding: 0;
   }
 }
 </style>

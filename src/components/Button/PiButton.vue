@@ -391,7 +391,7 @@ defineProps({
         linear-gradient(135deg, oklch(var(--color-danger-100) / 0.2) 25%, transparent 25%),
         linear-gradient(225deg, oklch(var(--color-danger-100) / 0.2) 25%, transparent 25%),
         linear-gradient(45deg, oklch(var(--color-danger-100) / 0.2) 25%, transparent 25%),
-        linear-gradient(315deg, oklch(var(--color-danger-50)) 25%, oklch(var(--button-ghost-bg)) 25%);
+        linear-gradient(315deg, oklch(var(--color-danger-100) / 0.2) 25%, oklch(var(--button-ghost-bg)) 25%);
       background-position:  0.75rem 0, 0.75rem 0, 0 0, 0 0;
       background-size: 1.5rem 1.5rem;
       background-repeat: repeat;
@@ -415,11 +415,6 @@ defineProps({
       color: oklch(var(--color-danger-600));
     }
   }
-  /* ~.pi-btn {
-    margin-right: var(--spacing-m);
-    margin-top: var(--spacing-xs);
-    margin-bottom: var(--spacing-xs);
-  } */
   &:has(~.pi-btn) {
     margin-right: var(--spacing-m);
     margin-top: var(--spacing-xs);

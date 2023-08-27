@@ -9,18 +9,18 @@ import PiTabs from "@/components/Tabs/PiTabs.vue";
 import { ref } from "vue";
 import DemoBreadcrumb from "@/views/demo/DemoBreadcrumb.vue";
 
-const activeTab = ref('button')
+const activeTab = ref('accordion')
 
 </script>
 
 <template>
   <pi-tabs v-model="activeTab">
-    <pi-tab-panel name="button" label="按鈕"><DemoButton/></pi-tab-panel>
-    <pi-tab-panel name="checkbox" label="核取方塊"><DemoCheckbox/></pi-tab-panel>
-    <pi-tab-panel name="card" label="卡片"><DemoCard/></pi-tab-panel>
-    <pi-tab-panel name="tabs" label="標籤"><DemoTabs/></pi-tab-panel>
-    <pi-tab-panel name="accordion" label="手風琴"><DemoAccordion/></pi-tab-panel>
-    <pi-tab-panel name="breadcrumb" label="頁面導覽(麵包屑)"><DemoBreadcrumb/></pi-tab-panel>
+    <pi-tab-panel name="accordion" label="Accordion"><DemoAccordion/></pi-tab-panel>
+    <pi-tab-panel name="breadcrumb" label="Breadcrumbs"><DemoBreadcrumb/></pi-tab-panel>
+    <pi-tab-panel name="button" label="Button"><DemoButton/></pi-tab-panel>
+    <pi-tab-panel name="card" label="Card"><DemoCard/></pi-tab-panel>
+    <pi-tab-panel name="checkbox" label="Checkbox"><DemoCheckbox/></pi-tab-panel>
+    <pi-tab-panel name="tabs" label="Tabs"><DemoTabs/></pi-tab-panel>
   </pi-tabs>
 </template>
 

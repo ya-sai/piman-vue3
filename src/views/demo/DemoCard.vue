@@ -2,36 +2,37 @@
   <div>
     <h2>Card</h2>
     <section>
-      <h3>基本</h3>
+      <h3>Basic</h3>
       <pi-card>
         Cotnent
       </pi-card>
     </section>
     <section>
-      <h3>內容無padding</h3>
+      <h3>Padding = 0</h3>
       <pi-card nopadding>
         Cotnent
       </pi-card>
     </section>
     <section>
-      <h3>客製化header</h3>
-      <pi-card header="卡片標題">
+      <h3>Custom Header</h3>
+      <pi-card header="Custom">
         Cotnent
       </pi-card>
+      <br>
       <pi-card>
         <template v-slot:header>
-          <mark>卡片標題</mark>
-          <pi-button theme="primary" size="small">查看更多</pi-button>
+          <mark>Custom</mark>
+          <pi-button theme="primary">Button</pi-button>
         </template>
         Cotnent
       </pi-card>
     </section>
     <section>
-      <h3>客製化header+陰影</h3>
+      <h3>Custom Header + Box-Shadow</h3>
       <pi-card shadow>
         <template v-slot:header>
-          <mark>卡片標題</mark>
-          <pi-button theme="primary" size="small">查看更多</pi-button>
+          <mark>Custom</mark>
+          <pi-button theme="primary">Button</pi-button>
         </template>
         Cotnent
         <template v-slot:footer>
@@ -41,11 +42,11 @@
       </pi-card>
     </section>
     <section>
-      <h3>客製化header+陰影+footer</h3>
+      <h3>Custom Header + Box-Shadow + Custom Footer</h3>
       <pi-card shadow>
         <template v-slot:header>
-          <mark>卡片標題</mark>
-          <pi-button theme="primary" size="small">查看更多</pi-button>
+          <mark>Custom</mark>
+          <pi-button theme="primary">Button</pi-button>
         </template>
         Cotnent
         <template v-slot:footer>
@@ -55,18 +56,18 @@
       </pi-card>
     </section>
     <section>
-      <h3>客製化header+陰影+footer+客製化內容</h3>
+      <h3>Custom Header + Box-Shadow + Custom Footer + Padding = 0</h3>
       <pi-card shadow  nopadding>
         <template v-slot:header>
-          <mark>卡片標題</mark>
-          <pi-button theme="primary" size="small">查看更多</pi-button>
+          <mark>Custom</mark>
+          <pi-button theme="primary">Button</pi-button>
         </template>
         <pi-accordion>
           <pi-accordion-item>
-            內容1
+            Content 1
           </pi-accordion-item>
           <pi-accordion-item>
-            內容2
+            Content 2
           </pi-accordion-item>
         </pi-accordion>
         <template v-slot:footer>
@@ -83,3 +84,9 @@
 // import { PiButton, PiCard, PiAccordion, PiAccordionItem } from "/dist/piman-vue3.es";
 
 </script>
+
+<style scoped>
+.pi-card {
+  max-width: 375px;
+}
+</style>

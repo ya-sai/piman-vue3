@@ -2,33 +2,33 @@
   <div>
     <h2>Accordion</h2>
     <section>
-      <h3>基本</h3>
+      <h3>Basic</h3>
       <pi-accordion>
         <pi-accordion-item>
-          內容1
+          Content
         </pi-accordion-item>
         <pi-accordion-item open>
-          內容2 預設打開
+          Content (set default open)
           <pi-accordion>
             <pi-accordion-item>
-              內容2-1
+              Content
             </pi-accordion-item>
             <pi-accordion-item open>
-              內容2-1 預設打開
+              Content (set default open)
             </pi-accordion-item>
           </pi-accordion>
         </pi-accordion-item>
       </pi-accordion>
     </section>
     <section>
-      <h3>客製化標題</h3>
+      <h3>Custom Header</h3>
       <pi-accordion>
-        <pi-accordion-item title="客製化標題：純文字">
-          內容1
+        <pi-accordion-item title="Custom">
+          Content
         </pi-accordion-item>
         <pi-accordion-item>
-          <template v-slot:title><mark>客製化標題：HTML</mark></template>
-          內容2
+          <template v-slot:title><mark>Custom(HTML)</mark></template>
+          Content
         </pi-accordion-item>
       </pi-accordion>
     </section>
