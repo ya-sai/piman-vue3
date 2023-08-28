@@ -18,6 +18,19 @@ a {
     outline: none;
     box-shadow: 0 0 0 3px oklch(var(--color-focus));
   }
+  &[role="button"] {
+    text-decoration: none;
+    &[target="_blank"] {
+      &:after {
+        display: none;
+      }
+    }
+  }
+  &[target="_blank"] {
+    &:after {
+      content: "\2197";
+    }
+  }
 }
 
 button {
