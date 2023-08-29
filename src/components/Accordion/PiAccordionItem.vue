@@ -67,5 +67,98 @@ onMounted(()=>{
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+
+.pi-accordion__item {
+  border-bottom: 1px solid oklch(var(--color-border));
+  word-break: break-all;
+  word-break: break-word;
+  &.pi-accordion__item--open {
+    >.pi-accordion__item-header {
+      >button {
+        &:after {
+          top: calc(50% - 4px);
+          transform: rotate(225deg);
+        }
+      }
+    }
+  }
+}
+
+.pi-accordion__item-header {
+  position: relative;
+  >button {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: var(--spacing-m) var(--spacing-xxl) var(--spacing-m) var(--spacing-m);
+    font-size: 1.125rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    line-height: 1.5rem;
+    word-break: break-all;
+    word-break: break-word;
+    color: oklch(var(--accordion-header-color));
+    background: oklch(var(--accordion-header-bg));
+    border: none;
+    >div {
+      width: 100%;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 0;
+      background-color: oklch(var(--accordion-bar-color));
+      transition: height 160ms ease-in, background-color 160ms ease-in;
+    }
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      border-width: 0 0.1875rem 0.1875rem 0;
+      border-color: oklch(var(--accordion-icon-color));
+      width: 0.625rem;
+      height: 0.625rem;
+      right: 1.25rem;
+      top: calc(50% - 0.40625rem);
+      transform: rotate(45deg);
+      /* transform: translate3d(0, 0.1rem, 0); */
+      transition: transform 160ms ease-in;
+    }
+    &:hover {
+      &:before {
+        height: 100%;
+      }
+    }
+    &:active {
+      &:before {
+        background-color: oklch(var(--accordion-active-bar-color));
+      }
+    }
+    &:focus {
+      box-shadow: inset 0 0 0 3px oklch(var(--color-focus));
+      @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none){
+        &:before {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.pi-accordion__item-container {
+  padding: var(--spacing-m);
+  background-color: oklch(var(--accordion-content-bg));
+  color: oklch(var(--accordion-content-color));
+  line-height: 1.5rem;
+  word-break: break-all;
+  word-break: break-word;
+  &[aria-hidden="true"] {
+    display: none;
+  }
+}
 </style>

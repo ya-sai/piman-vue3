@@ -17,8 +17,11 @@ const translation = {
   "form":{
     "required": "必填"
   },
+  "badge":{
+    "pre": " 補充資訊："
+  },
   "breadcrumb":{
-    "current_page":"現在頁面位置"
+    "current_page":"頁面路徑"
   },
   "button":{
     "loading": "載入中"
