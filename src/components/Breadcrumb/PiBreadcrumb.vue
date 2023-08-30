@@ -27,3 +27,14 @@ onMounted(()=>{
   }
 })
 </script>
+
+<style scoped>
+.pi-breadcrumb {
+  & ol {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding-left: 0;
+  }
+}
+</style>

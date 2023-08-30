@@ -12,11 +12,11 @@ const routes = [
         name: 'demo-accordion',
         component: () => import('@/views/demo/DemoAccordion.vue')
       },
-    //   {
-    //     path: '/demo-breadcrumb',
-    //     name: 'demo-breadcrumb',
-    //     component: () => import('@/views/demo/DemoBreadcrumb.vue')
-    //   },
+      {
+        path: '/breadcrumb',
+        name: 'demo-breadcrumb',
+        component: () => import('@/views/demo/DemoBreadcrumb.vue')
+      },
       {
         path: '/button',
         name: 'demo-button',
