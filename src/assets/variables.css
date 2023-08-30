@@ -190,7 +190,6 @@
 
   /* Breadcrumb */
   --breadcrumb-color: var(--article-paragraph-color);
-  --breadcrumb-link-color: var(--link-color);
 
   /* Button */
   --button-flat-color: var(--color-white);
@@ -312,7 +311,6 @@
 
     /* Breadcrumb */
     --breadcrumb-color: var(--article-paragraph-color);
-    --breadcrumb-link-color: var(--link-color);
 
     /* Button */
     --button-flat-color: var(--color-white);
