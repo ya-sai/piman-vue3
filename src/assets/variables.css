@@ -15,6 +15,7 @@
   --color-pure-black: 100% 0 0;
   --color-pure-white: 0 0 0;
   
+  --color-gray-50: 97.31% 0 0;
   --color-gray-100: 94.66% 0 0;
   --color-gray-200: 86.89% 0 0;
   --color-gray-300: 78.94% 0 0;
@@ -187,6 +188,9 @@
   --color-badge-bg: var(--color-warning-100);
   --color-badge-color:  var(--color-black);
 
+  /* Breadcrumb */
+  --breadcrumb-color: var(--article-paragraph-color);
+
   /* Button */
   --button-flat-color: var(--color-white);
   --button-ghost-bg: var(--color-white);
@@ -304,6 +308,9 @@
     --accordion-content-color: var(--article-paragraph-color);
     --accordion-content-bg: var(--color-gray-900);
     --accordion-icon-color: var(--color-primary-200);
+
+    /* Breadcrumb */
+    --breadcrumb-color: var(--article-paragraph-color);
 
     /* Button */
     --button-flat-color: var(--color-white);

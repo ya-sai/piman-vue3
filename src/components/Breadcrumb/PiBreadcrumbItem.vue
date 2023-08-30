@@ -24,3 +24,19 @@ defineProps({
 })
 
 </script>
+
+<style scoped>
+.pi-breadcrumb__item {
+  color: oklch(var(--breadcrumb-color));
+  &:after {
+    content: '/';
+    margin: 0 var(--spacing-xs);
+  }
+  &[aria-current] {
+    font-weight: normal;
+    &:after {
+      display: none;
+    }
+  }
+}
+</style>
