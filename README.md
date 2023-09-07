@@ -17,7 +17,6 @@
 | Button | `PiButton.vue` | ✅ |
 | Card | `PiCard.vue` | ✅ |
 | Checkbox | `PiCheckbox.vue` | ✅ |
-| Tabs | `PiTabPanel.vue`、`PiTabs.vue` | ✅ |
 | Dropdown | `BpaDropdown.vue` |  |
 | Form | `BpaForm.vue`、`BpaFormItem.vue`、套件[async-validator](https://github.com/yiminghe/async-validator) |  |
 | Input | `BpaInput.vue` ||
@@ -27,25 +26,24 @@
 | Radio |`BpaRadio.vue`| |
 | Select |`BpaSelect.vue`|
 | Switch |`BpaSwitch.vue`|
+| Tabs | `PiTabPanel.vue`、`PiTabs.vue` | ✅ |
 | Tooltip | `BpaTooltip.vue` |
 | Tree | `BpaTree.vue`、`BpaTreeNode.vue` |  |
 
 
-
-
 ## 🖥 瀏覽器支援
-主流瀏覽器
+主流瀏覽器最新版
 
 
 ## 📖 開發文件
-[前往 Piman 文件](https://ya-sai.github.io/piman/category/document/index.html)
+製作中
 
 ## 😎 成為貢獻者
-我們正在招募貢獻者幫助我們改善 Piman，如果您有興趣，請先至 [Contributing Guide](https://github.com/ya-sai/piman/blob/main/.github/CONTRIBUTING.md) 以及 [Developer Guide](https://piman.notion.site/Contributors-Piman-4d5c910dfbee4066b455cb07d0684af8) ，若有興趣，請來信至 [piman@bluepalnet.com.tw](mailto:piman@bluepalnet.com.tw)。
+我們正在招募貢獻者幫助我們改善 Piman，如果您有興趣，請先至 [Contributing Guide](https://github.com/ya-sai/piman-vue3/blob/main/.github/CONTRIBUTING.md) 以及 Developer Guide(製作中)，若有興趣，請來信至 [piman@bluepalnet.com.tw](mailto:piman@bluepalnet.com.tw)。
 
 ## 💬 體驗調查
 我們非常希望能接收到您[對 Piman 的感受或使用心得](https://app.ballparkhq.com/record/c8c3d48f-7efc-4f3e-8e1d-7b77c14b2a0e)，
 以做為 Piman 越來越好的參考，並且幫助到更多的使用者。
 
 ## ❗ Copyright and license 
-Licensed under the [Apache 2.0 License](https://github.com/ya-sai/piman/blob/main/LICENSE).
+Licensed under the [Apache 2.0 License](https://github.com/ya-sai/piman-vue3/blob/main/LICENSE).
