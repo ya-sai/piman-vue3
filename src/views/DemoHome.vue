@@ -173,6 +173,11 @@ main {
       color: #FFBB00;
     }
   }
+  .pi-breadcrumb__item {
+    &[aria-current] {
+      color: white;
+    }
+  }
 }
 .page-main {
   min-height: 100vh;
