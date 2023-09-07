@@ -188,5 +188,8 @@ main {
     padding: 1rem;
     border-top-right-radius: 0.75rem;
   }
+  @media (prefers-color-scheme: dark) {
+    background-color: #333;
+  }
 }
 </style>

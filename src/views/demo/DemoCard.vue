@@ -75,7 +75,7 @@
       </section>
       <section>
         <h3>Custom Header + Box-Shadow + Custom Footer + Padding = 0</h3>
-        <pi-card shadow  nopadding>
+        <pi-card shadow nopadding>
           <template v-slot:header>
             <mark>Custom</mark>
             <pi-button theme="primary">Button</pi-button>

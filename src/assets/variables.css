@@ -223,6 +223,13 @@
   --dialog-content-bg: var(--color-white);
   --dialog-footer-bg: var(--color-white);
   --dialog-border-color: var(--color-border);
+
+  /* Switch */
+  --switch-checked-bg: var(--color-primary-500);
+  --switch-unchecked-bg: var(--color-gray-200);
+  --switch-square-bg: var(--color-white);
+  --switch-square-color: var(--color-black);
+  --switch-square-checked-color: var(--color-white);
 }
 
 
@@ -344,5 +351,12 @@
     --dialog-content-bg: var(--color-black);
     --dialog-footer-bg: var(--color-black);
     --dialog-border-color: var(--color-border);
+
+    /* Switch */
+    --switch-checked-bg: var(--color-primary-300);
+  --switch-unchecked-bg: var(--color-gray-200);
+  --switch-square-bg: var(--color-white);
+  --switch-square-color: var(--color-black);
+  --switch-square-checked-color: var(--color-black);
   }
 }
