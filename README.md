@@ -25,7 +25,7 @@
 | Popover |`BpaPopover.vue`||
 | Radio |`BpaRadio.vue`| |
 | Select |`BpaSelect.vue`|
-| Switch |`BpaSwitch.vue`|
+| Switch |`PiSwitch.vue`| ✅ |
 | Tabs | `PiTabPanel.vue`、`PiTabs.vue` | ✅ |
 | Tooltip | `BpaTooltip.vue` |
 | Tree | `BpaTree.vue`、`BpaTreeNode.vue` |  |
