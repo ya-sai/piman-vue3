@@ -12,7 +12,6 @@
       v-model="activeCheck"
       :disabled="disabled"
       :value="value"
-
       class="pi-checkbox-input"
       v-bind="$attrs"
       @change="onEvent('change')"

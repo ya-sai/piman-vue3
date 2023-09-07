@@ -1,10 +1,5 @@
 <template>
-  <div
-    :class="[
-      'pi-accordion__item',
-      accordionContainerOpen ? 'pi-accordion__item--open' : ''
-    ]"
-  >
+  <div class="pi-accordion__item">
     <div class="pi-accordion__item-header">
       <button
         type="button"
@@ -73,16 +68,6 @@ onMounted(()=>{
   border-bottom: 1px solid oklch(var(--color-border));
   word-break: break-all;
   word-break: break-word;
-  &.pi-accordion__item--open {
-    >.pi-accordion__item-header {
-      >button {
-        &:after {
-          top: calc(50% - 4px);
-          transform: rotate(225deg);
-        }
-      }
-    }
-  }
 }
 
 .pi-accordion__item-header {
@@ -145,6 +130,12 @@ onMounted(()=>{
         &:before {
           height: 100%;
         }
+      }
+    }
+    &[aria-expanded="true"] {
+      &:after {
+        top: calc(50% - 4px);
+        transform: rotate(225deg);
       }
     }
   }

@@ -12,9 +12,6 @@
 </template>
 
 <script lang="ts" setup>
-import { getCurrentInstance } from 'vue';
-
-
 defineProps({
   to: [String, Object],
   title: {
@@ -28,14 +25,10 @@ defineProps({
 <style scoped>
 .pi-breadcrumb__item {
   color: oklch(var(--breadcrumb-color));
-  &:after {
-    content: '/';
-    margin: 0 var(--spacing-xs);
-  }
-  &[aria-current] {
-    font-weight: normal;
+  &:not(:last-of-type) {
     &:after {
-      display: none;
+      content: '/';
+      margin: 0 var(--spacing-xs);
     }
   }
 }
