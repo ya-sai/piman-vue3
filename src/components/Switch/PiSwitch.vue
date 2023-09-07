@@ -3,15 +3,15 @@
     <button
       type="button"
       role="switch"
-      :aria-checked="`${value}`"
+      :aria-checked="`${modelValue}`"
       :id="`pi-switch-${fixId}`"
       @click="onSwitch"
       @blur="onEvent('blur')"
     >
-      <div class="pi-switch-text pi-switch-text--close">
+      <div class="pi-switch-square pi-switch-square--close">
         <slot name="close-text">{{ t('switch.off') }}</slot>
       </div>
-      <div class="pi-switch-text pi-switch-text--open">
+      <div class="pi-switch-square pi-switch-square--open">
         <slot name="open-text">{{ t('switch.on') }}</slot>
       </div>
     </button>
@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, computed } from 'vue';
+import { computed, getCurrentInstance, nextTick, onMounted, ref  } from 'vue';
 import { generateId } from '@/utils/generateId';
 import useI18n from "@/locales/useI18n";
 
@@ -35,91 +35,89 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  value: Boolean,
+  modelValue: Boolean,
 });
 
 const { t } = useI18n()
+const emit = defineEmits([ 'input', 'blur', 'change', 'update:modelValue' ])
 
 const fixId = ref('');
 const switchOpen = ref(false);
 
-const formItem = computed(() => {
-  let parent = $parent;
-  if (!parent) return null;
-  let parentName = parent.$options.name;
+const formItem = computed(()=>{
+  const self = getCurrentInstance()
+  if(!self) return null
+  let parent = self.parent;
+  if(!parent) return null
+  let parentName = parent.type.__name;
 
   while (parentName !== 'PiFormItem') {
-    parent = parent.$parent;
-    if (!parent) return null;
-    parentName = parent.$options.name;
+    parent = parent.parent;
+    if(!parent) return null
+    parentName = parent.type.__name;
   }
   return parent;
-});
+})
 
 const onEvent = (event: 'blur' | 'change') => {
-  nextTick(() => {
-    if (formItem.value) formItem.value.$emit(event);
-  });
-};
+  emit(event)
+  nextTick(()=>{
+    if(formItem.value) formItem.value.emit(event)
+  })
+}
 
 const onSwitch = () => {
-  switchOpen.value = !props.value;
-  $emit('update:value', switchOpen.value);
-  $emit('change', switchOpen.value);
+  switchOpen.value = !props.modelValue;
+  emit('update:modelValue', switchOpen.value);
+  emit('change', switchOpen.value);
   onEvent('change');
 };
 
-onMounted(() => {
-  if(props.id){
-    fixId.value = props.id
-  }
-  else {
-    fixId.value = String(generateId())
-  }
-});
+onMounted(()=>{
+  fixId.value = props.id ? `${props.id}` : `${generateId()}`
+})
 </script>
 
 <style scoped>
 .pi-switch {
-  button {
-    padding: 0.25rem;
-    border-radius: 0.25rem;
+  & button {
+    padding: var(--spacing-xxs);
+    border-radius: var(--radius);
     display: flex;
     flex-direction: row;
     align-items: stretch;
     transition: background-color 160ms ease-in;
     &[aria-checked="false"] {
-      background-color: lighten($color-gray, 30%);
+      background-color: oklch(var(--switch-unchecked-bg));
+      color: oklch(var(--switch-square-color));
       transition: background-color 160ms ease-in;
-      .pi-switch-text--close {
-        background-color: $color-white;
+      & .pi-switch-square--close {
+        background-color: oklch(var(--switch-square-bg));
+      }
+      & .pi-switch-square--open {
+        background-color: transparent;
       }
     }
     &[aria-checked="true"] {
-      background-color: $color-primary;
+      background-color: oklch(var(--switch-checked-bg));
+      color: oklch(var(--switch-square-color));
       transition: background-color 160ms ease-in;
-      .pi-switch-text--close {
-        color: $color-white;
+      & .pi-switch-square--close {
+        background-color: transparent;
+        color: oklch(var(--switch-square-checked-color));
       }
-      .pi-switch-text--open {
-        background-color: $color-white;
+      & .pi-switch-square--open {
+        background-color: oklch(var(--switch-square-bg));
       }
     }
-    &:hover {
-      box-shadow: 0 0 0 1px $color-primary;
-    }
-    &:active {
-      box-shadow: 0 0 0 1px $color-primary;
-    }
-    &:focus {
-      box-shadow: 0 0 0 3px $outline-color;
+    &:focus-within {
+      box-shadow: 0 0 0 3px oklch(var(--color-focus));
     }
   }
 }
 
-.pi-switch-text {
-  color: $color-black;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.1875rem;
+.pi-switch-square {
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  border-radius: var(--radius-inner);
 }
 </style>
