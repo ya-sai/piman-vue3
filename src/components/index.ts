@@ -5,6 +5,7 @@ import PiBreadcrumbItem from './Breadcrumb/PiBreadcrumbItem.vue'
 import PiButton from "./Button/PiButton.vue";
 import PiCard from "./Card/PiCard.vue";
 import PiCheckbox from "./Checkbox/PiCheckbox.vue";
+import PiRadio from "./Radio/PiRadio.vue";
 import PiSwitch from "./Switch/PiSwitch.vue";
 import PiTabs from "./Tabs/PiTabs.vue";
 import PiTabPanel from "./Tabs/PiTabPanel.vue";
@@ -17,6 +18,7 @@ export {
   PiButton,
   PiCard,
   PiCheckbox,
+  PiRadio,
   PiSwitch,
   PiTabs,
   PiTabPanel
