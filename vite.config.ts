@@ -18,6 +18,9 @@ const buildDemoConfig = {
   },
   build: {
     outDir: 'demo'
+  },
+  server: {
+    host: '0.0.0.0'
   }
 }
 
