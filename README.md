@@ -23,7 +23,7 @@
 | Msg | `BpaMsg.vue`、`BpaMsg.ts` |  |
 | Pagination | `BpaPagination.vue` ||
 | Popover |`BpaPopover.vue`||
-| Radio |`BpaRadio.vue`| |
+| Radio |`PiRadio.vue`| ✅ |
 | Select |`BpaSelect.vue`|
 | Switch |`PiSwitch.vue`| ✅ |
 | Tabs | `PiTabPanel.vue`、`PiTabs.vue` | ✅ |
