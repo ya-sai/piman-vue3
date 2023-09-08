@@ -17,6 +17,7 @@
         <pi-radio name="testname" value="1" v-model="valRaio" id="a">單選按鈕 1</pi-radio>
         <pi-radio name="testname" value="2" v-model="valRaio" id="b">單選按鈕 2</pi-radio>
         <pi-radio name="testname" value="3" v-model="valRaio" id="c">單選按鈕 3</pi-radio>
+        <pi-radio name="testname" value="4" v-model="valRaio" id="d" disabled>單選按鈕 4</pi-radio>
         <br>
         Select: {{ valRaio }}
       </section>
