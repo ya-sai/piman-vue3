@@ -47,11 +47,16 @@
         </nav>
       </div>
       <div class="aside-block">
-        <article>
-          <a href="https://github.com/ya-sai/piman-vue3" target="_blank" rel="noreferrer noopener">Github</a>
-          <!-- <br><br>
-          <a href="https://piman.cc/category/document/components/" target="_blank" rel="noreferrer noopener">Docs</a> -->
-        </article>
+        <nav class="menu">
+          <ul>
+            <li>
+              <a href="https://github.com/ya-sai/piman-vue3" target="_blank" rel="noreferrer noopener">Github</a>
+            </li>
+            <!-- <li>
+              <a href="https://piman.cc/category/document/components/" target="_blank" rel="noreferrer noopener">Docs</a>
+            </li> -->
+          </ul>
+        </nav>
       </div>
     </aside>
     <main>
@@ -69,6 +74,9 @@
   width: 100%;
   line-height: 1.5;
   background: #222;
+  @media screen and (width <= 768px) {
+    flex-direction: column;
+  }
 }
 &:is(h1, h2, h3, h4, h5, h6) {
   font-weight: bold;
@@ -102,6 +110,14 @@ svg {
   display: block;
   text-align: center;
 }
+@keyframes shadow-inside {
+  from {
+    box-shadow: inset -1rem 0 1rem rgb(0 0 0 / 0.8);
+  }
+  to {
+    box-shadow: inset 1rem 0 1rem rgb(0 0 0 / 0.8);
+  }
+}
 aside {
   position: sticky;
   top: 0;;
@@ -110,11 +126,19 @@ aside {
   word-break: break-word;
   overflow: auto;
   color: white;
+  white-space: nowrap;
+  background: #222;
+  animation: shadow-inside linear;
+  animation-timeline: scroll(self inline);
+  z-index: 2;
   &::-webkit-scrollbar {
     width: 0;
   }
   @media screen and (width <= 768px) {
-    width: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
   }
   & a {
     color: white;
@@ -126,12 +150,20 @@ aside {
 .aside-block {
   padding: 1rem 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  @media screen and (width <= 768px) {
+    flex: 1;
+    border-bottom-width: 0;
+
+  }
 }
 .menu {
-  > ul {
+  & ul {
     margin-top: -1rem;
     margin-left: -1.5rem;
     margin-right: -1.5rem;
+    @media screen and (width <= 768px) {
+      display: flex;
+    }
   }
   & li {
     & a {
@@ -140,6 +172,9 @@ aside {
       &:hover {
         background-color: rgba(2, 2, 2, 0.7);
         opacity: 1;
+      }
+      &:focus-within {
+        box-shadow: inset 0 0 0 3px oklch(var(--color-focus));
       }
       &[aria-current] {
         background-color: #020202;
