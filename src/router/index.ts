@@ -38,6 +38,11 @@ const routes = [
     //     component: () => import('@/views/demo/DemoDropdown.vue')
     //   },
       {
+        path: '/radio',
+        name: 'demo-radio',
+        component: () => import('@/views/demo/DemoRadio.vue')
+      },
+      {
         path: '/switch',
         name: 'demo-switch',
         component: () => import('@/views/demo/DemoSwitch.vue')

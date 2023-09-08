@@ -224,6 +224,19 @@
   --dialog-footer-bg: var(--color-white);
   --dialog-border-color: var(--color-border);
 
+  /* Radio */
+  --radio-circle-bg: var(--color-white);
+  --radio-circle-active-bg: var(--color-primary-100);
+  --radio-circle-checked-bg: var(--color-primary-500);
+  --radio-label-color: var(--color-gray-900);
+  --radio-label-hover-color: var(--color-primary-600);
+  --radio-label-active-color: var(--color-primary-600);
+  --radio-label-focus-color: var(--color-primary-600);
+  --radio-border-hover-color: var(--color-primary-500);
+  --radio-border-active-color: var(--color-primary-500);
+  --radio-border-focus-color: var(--color-focus);
+
+
   /* Switch */
   --switch-checked-bg: var(--color-primary-500);
   --switch-unchecked-bg: var(--color-gray-200);
@@ -352,11 +365,23 @@
     --dialog-footer-bg: var(--color-black);
     --dialog-border-color: var(--color-border);
 
+    /* Radio */
+    --radio-circle-bg: var(--color-white);
+    --radio-circle-active-bg: var(--color-primary-100);
+    --radio-circle-checked-bg: var(--color-primary-500);
+    --radio-label-color: var(--color-gray-100);
+    --radio-label-hover-color: var(--color-primary-200);
+    --radio-label-active-color: var(--color-primary-200);
+    --radio-label-focus-color: var(--color-primary-200);
+    --radio-border-hover-color: var(--color-primary-500);
+    --radio-border-active-color: var(--color-primary-500);
+    --radio-border-focus-color: var(--color-focus);
+
     /* Switch */
     --switch-checked-bg: var(--color-primary-300);
-  --switch-unchecked-bg: var(--color-gray-200);
-  --switch-square-bg: var(--color-white);
-  --switch-square-color: var(--color-black);
-  --switch-square-checked-color: var(--color-black);
+    --switch-unchecked-bg: var(--color-gray-200);
+    --switch-square-bg: var(--color-white);
+    --switch-square-color: var(--color-black);
+    --switch-square-checked-color: var(--color-black);
   }
 }
