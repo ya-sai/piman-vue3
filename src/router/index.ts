@@ -58,7 +58,17 @@ const routes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      const focusEl = document.querySelector(to.hash);
+      focusEl.focus();
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      }
+    }
+  }
 })
 
 export default router

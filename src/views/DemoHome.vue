@@ -1,7 +1,9 @@
 <template>
   <div id="app">
+    <router-link to="#ak-container" title="跳至主要內容" id="ak-jump">跳至主要內容</router-link>
     <h1 class="visually-hidden">Piman 無障礙前端 UI 框架 Vue3版</h1>
     <aside>
+      <router-link to="#ak-nav" title="選單區塊" id="ak-nav" accesskey="N" name="ak-nav">:::</router-link>
       <div class="aside-block">
         <router-link to="/" class="logo" title="Logo">
           <img src="/logo-white.svg" alt="Piman Logo">
@@ -118,6 +120,17 @@ svg {
     box-shadow: inset 1rem 0 1rem rgb(0 0 0 / 0.8);
   }
 }
+#ak-jump {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  &:focus-within {
+    opacity: 1;
+    z-index: 3;
+  }
+}
 aside {
   position: sticky;
   top: 0;;
@@ -138,7 +151,7 @@ aside {
     width: 100%;
     height: auto;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
   }
   & a {
     color: white;
@@ -153,7 +166,6 @@ aside {
   @media screen and (width <= 768px) {
     flex: 1;
     border-bottom-width: 0;
-
   }
 }
 .menu {
@@ -163,6 +175,7 @@ aside {
     margin-right: -1.5rem;
     @media screen and (width <= 768px) {
       display: flex;
+      margin-top: 0;
     }
   }
   & li {

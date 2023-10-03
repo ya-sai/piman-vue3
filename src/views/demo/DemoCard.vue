@@ -11,6 +11,7 @@
       </pi-breadcrumb>
     </div>
     <div class="page-main">
+      <router-link to="#ak-container" title="中央內容區塊" id="ak-container" accesskey="C" name="ak-container">:::</router-link>
       <h2>Card</h2>
       <section>
         <h3>Basic</h3>
