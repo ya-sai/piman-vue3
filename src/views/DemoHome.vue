@@ -126,6 +126,8 @@ svg {
   left: 0;
   opacity: 0;
   z-index: -1;
+  color: white;
+  background: black;
   &:focus-within {
     opacity: 1;
     z-index: 3;
