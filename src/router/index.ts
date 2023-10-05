@@ -32,11 +32,16 @@ const routes = [
         name: 'demo-checkbox',
         component: () => import('@/views/demo/DemoCheckbox.vue')
       },
-    //   {
-    //     path: '/demo-dropdown',
-    //     name: 'demo-dropdown',
-    //     component: () => import('@/views/demo/DemoDropdown.vue')
-    //   },
+      {
+        path: '/input',
+        name: 'demo-input',
+        component: () => import('@/views/demo/DemoInput.vue')
+      },
+      {
+        path: '/pagination',
+        name: 'demo-pagination',
+        component: () => import('@/views/demo/DemoPagination.vue')
+      },
       {
         path: '/radio',
         name: 'demo-radio',
