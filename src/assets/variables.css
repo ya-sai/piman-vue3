@@ -215,6 +215,9 @@
   --checkbox-icon-color: var(--color-gray-800);
   --checkbox-inner-icon-color: var(--color-primary-500);
 
+  /* Pagination */
+  --pagination-color: var(--article-paragraph-color);
+
   /* Dialog/Card */
   --dialog-header-close-btn-color: var(--color-primary-600);
   --dialog-header-title-color: var(--article-title-color);
@@ -235,7 +238,6 @@
   --radio-border-hover-color: var(--color-primary-500);
   --radio-border-active-color: var(--color-primary-500);
   --radio-border-focus-color: var(--color-focus);
-
 
   /* Switch */
   --switch-checked-bg: var(--color-primary-500);
@@ -355,6 +357,9 @@
     --checkbox-border-error-color: var(--color-danger-500);
     --checkbox-icon-color: var(--color-gray-400);
     --checkbox-inner-icon-color: var(--color-primary-500);
+
+    /* Pagination */
+    --pagination-color: var(--article-paragraph-color);
 
     /* Dialog/Card */
     --dialog-header-close-btn-color: var(--color-white);
