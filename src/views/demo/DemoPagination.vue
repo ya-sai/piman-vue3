@@ -61,6 +61,17 @@
           </pi-pagination>
         </section>
         <section>
+          <h3>Change Pager Count</h3>
+          <p>pagerCount & pageSize must same</p>
+          <pi-pagination
+            :total="totalPages"
+            v-model:current-page="currentPage"
+            :pager-count="3"
+            @change:page="onChangePage"
+            :pageSize="3"
+          />
+        </section>
+        <section>
           <h3>Layout</h3>
           <p>:layout="['total_item', 'total_page', 'page_size', 'first', 'last', 'jump']"</p>
           <pi-pagination
