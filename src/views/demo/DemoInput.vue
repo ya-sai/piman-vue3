@@ -13,11 +13,13 @@
     <div class="page-main">
       <router-link to="#ak-container" title="中央內容區塊" id="ak-container" accesskey="C" name="ak-container">:::</router-link>
       <h2>Input</h2>
+      <p>id manually</p>
       <section>
         <h3>Size</h3>
         <pi-input
           v-model="value"
           size="small"
+          id="testId"
         />
         <pi-input
           v-model="value"
