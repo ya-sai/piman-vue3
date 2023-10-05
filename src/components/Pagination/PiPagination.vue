@@ -194,7 +194,8 @@ const pagers = computed(() => {
 //   emit('change:pageSize', pageSize)
 // };
 
-const emit = defineEmits([ 'input', 'blur', 'change', 'update:modelValue' ])
+const emit = defineEmits(['update:currentPage','sync-page-param', 'change:page']);
+// const emit = defineEmits([ 'input', 'blur', 'change', 'update:modelValue' ])
 
 const handleClickPager = (page) => {
   if (page > 0 && page <= totalPages.value) {
