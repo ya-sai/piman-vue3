@@ -140,7 +140,7 @@
 
 <script lang="ts" setup>
 import { generateId } from '@/utils/generateId';
-import { ref, onMounted, defineProps, computed, watch } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import useI18n from "@/locales/useI18n";
 
 const props = defineProps ({
