@@ -104,6 +104,6 @@ const onChangePage = (page: number) => {
 
 const path = ref([
   { title: '🏠首頁', url: '/'},
-  { title: 'Input'},
+  { title: 'Pagination'},
 ])
 </script>
