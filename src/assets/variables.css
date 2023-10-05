@@ -215,6 +215,16 @@
   --checkbox-icon-color: var(--color-gray-800);
   --checkbox-inner-icon-color: var(--color-primary-500);
 
+  /* Input */
+  --input-error-bg: var(--color-white);
+  --input-has-content-color: var(--color-black);
+  --input-has-content-error-color: var(--color-danger-600);
+  --input-error-btn-color: var(--color-black);
+  --input-btn-color: var(--color-black);
+  --input-clear-btn-color: var(--color-gray-500);
+  --input-error-clear-btn-color: var(--color-gray-500);
+  --input-error-border-color: var(--color-danger-500);
+
   /* Pagination */
   --pagination-color: var(--article-paragraph-color);
 
@@ -357,6 +367,16 @@
     --checkbox-border-error-color: var(--color-danger-500);
     --checkbox-icon-color: var(--color-gray-400);
     --checkbox-inner-icon-color: var(--color-primary-500);
+
+    /* Input */
+    --input-error-bg: var(--color-danger-800);
+    --input-has-content-color: var(--color-black);
+    --input-has-content-error-color: var(--color-white);
+    --input-error-btn-color: var(--color-white);
+    --input-btn-color: var(--color-black);
+    --input-clear-btn-color: var(--color-gray-500);
+    --input-error-clear-btn-color: var(--color-white);
+    --input-error-border-color: var(--color-danger-500);
 
     /* Pagination */
     --pagination-color: var(--article-paragraph-color);

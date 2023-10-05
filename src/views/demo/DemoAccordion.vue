@@ -50,8 +50,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-//@ts-ignore
-// import { PiAccordion, PiAccordionItem } from "/dist/piman-vue3.es";
 const path = ref([
   { title: '🏠首頁', url: '/'},
   { title: 'Accrordion'},

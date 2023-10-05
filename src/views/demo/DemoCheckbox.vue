@@ -34,9 +34,6 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 
-//@ts-ignore
-// import { PiButton, PiCheckbox } from "/dist/piman-vue3.es";
-
 // checkbox
 const valCheckbox = ref([])
 const onClearCheckbox = () => {

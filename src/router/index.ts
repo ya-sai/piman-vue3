@@ -38,6 +38,11 @@ const routes = [
         component: () => import('@/views/demo/DemoInput.vue')
       },
       {
+        path: '/msg',
+        name: 'demo-msg',
+        component: () => import('@/views/demo/DemoMsg.vue')
+      },
+      {
         path: '/pagination',
         name: 'demo-pagination',
         component: () => import('@/views/demo/DemoPagination.vue')

@@ -49,10 +49,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-//@ts-ignore
-// import { PiTabPanel, PiTabs } from "/dist/piman-vue3.es";
-// import PiTabPanel from '@/components/Tabs/PiTabPanel.vue'
-// import PiTabs from '@/components/Tabs/PiTabs.vue'
 
 const demoTabs = ref('first-tab')
 const demoTabs2 = ref('first-tab2')

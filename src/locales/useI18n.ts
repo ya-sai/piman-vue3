@@ -22,7 +22,7 @@ export default function (){
     if(!l) return
     if(typeof l === 'string'){
       const target = languages[l]
-      if(!target) return console.error(`[BpaI18n Error]: The locale "${l}" is not supported.`);
+      if(!target) return console.error(`[PiI18n Error]: The locale "${l}" is not supported.`);
       translation.value = target
     }else{
       translation = l ? { ...translation, ...l } : translation

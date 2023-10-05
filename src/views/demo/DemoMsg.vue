@@ -12,13 +12,9 @@
     </div>
     <div class="page-main">
       <router-link to="#ak-container" title="中央內容區塊" id="ak-container" accesskey="C" name="ak-container">:::</router-link>
-      <h2>Switch</h2>
+      <h2>Message</h2>
       <section>
-        <h3>Basic</h3>
-        <pi-switch
-          labelText="這是 Switch 開關按鈕"
-          v-model="isOpen"
-        />
+        Msg Content
       </section>
     </div>
   </div>
@@ -28,9 +24,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-const isOpen = ref(false)
 const path = ref([
   { title: '🏠首頁', url: '/'},
-  { title: 'Switch'},
+  { title: 'Pagination'},
 ])
 </script>

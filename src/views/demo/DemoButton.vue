@@ -98,9 +98,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-//@ts-ignore
-// import { PiButton } from "/dist/piman-vue3.es";
-// import PiButton from '@/components/Button/PiButton.vue'
 
 const path = ref([
   { title: '🏠首頁', url: '/'},

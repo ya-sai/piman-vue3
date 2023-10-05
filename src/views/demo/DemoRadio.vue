@@ -29,8 +29,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-//@ts-ignore
-// import { PiRadio } from "/dist/piman-vue3.es";
 
 // radio
 const valRaio = ref(3)

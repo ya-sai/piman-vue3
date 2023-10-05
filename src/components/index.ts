@@ -6,6 +6,7 @@ import PiButton from "./Button/PiButton.vue";
 import PiCard from "./Card/PiCard.vue";
 import PiCheckbox from "./Checkbox/PiCheckbox.vue";
 import PiInput from "./Input/PiInput.vue";
+import PiMsg from "./Msg/PiMsg.vue";
 import PiPagination from "./Pagination/PiPagination.vue";
 import PiRadio from "./Radio/PiRadio.vue";
 import PiSwitch from "./Switch/PiSwitch.vue";
@@ -21,6 +22,7 @@ export {
   PiCard,
   PiCheckbox,
   PiInput,
+  PiMsg,
   PiPagination,
   PiRadio,
   PiSwitch,

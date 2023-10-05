@@ -41,8 +41,8 @@
             class="first"
           >
             <pi-button
-              :aria-disabled="syncCurrentPage === 1 ? true : false"
-              :disabled="syncCurrentPage === 1 ? true : false"
+              :aria-disabled="props.currentPage === 1 ? true : false"
+              :disabled="props.currentPage === 1 ? true : false"
               theme="primary-ghost"
               :size="size"
               @click="handleClickPager(1)"
@@ -55,8 +55,8 @@
           </li>
           <li class="prev">
             <pi-button
-              :aria-disabled="syncCurrentPage === 1 ? true : false"
-              :disabled="syncCurrentPage === 1 ? true : false"
+              :aria-disabled="props.currentPage === 1 ? true : false"
+              :disabled="props.currentPage === 1 ? true : false"
               theme="primary-ghost"
               :size="size"
               @click="handleClickPager(prevPage)"
@@ -70,11 +70,11 @@
           <li 
             v-for="item in pagers"
             :key="item"
-            :class="item === syncCurrentPage ? 'current' : ''"
+            :class="item === props.currentPage ? 'current' : ''"
           >
             <pi-button
-              :aria-current="item === syncCurrentPage ? true : false"
-              :theme="item === syncCurrentPage ? 'primary' : 'primary-ghost'"
+              :aria-current="item === props.currentPage ? true : false"
+              :theme="item === props.currentPage ? 'primary' : 'primary-ghost'"
               :size="size"
               @click="handleClickPager(item)"
             >
@@ -85,8 +85,8 @@
           </li>
           <li class="next">
             <pi-button
-              :aria-disabled="syncCurrentPage === totalPages ? true : false"
-              :disabled="(syncCurrentPage === totalPages) || (totalPages === 0) ? true : false"
+              :aria-disabled="props.currentPage === totalPages ? true : false"
+              :disabled="(props.currentPage === totalPages) || (totalPages === 0) ? true : false"
               theme="primary-ghost"
               :size="size"
               @click="handleClickPager(nextPage)"
@@ -102,8 +102,8 @@
             class="last"
           >
             <pi-button
-              :aria-disabled="syncCurrentPage === totalPages ? true : false"
-              :disabled="(syncCurrentPage === totalPages) || (totalPages === 0) ? true : false"
+              :aria-disabled="props.currentPage === totalPages ? true : false"
+              :disabled="(props.currentPage === totalPages) || (totalPages === 0) ? true : false"
               theme="primary-ghost"
               :size="size"
               @click="handleClickPager(totalPages)"
@@ -123,16 +123,16 @@
     >
       <label :for="goPagesId">
         <span>{{ t('pagination.goto') }}</span>
-        <!-- <pi-input
+        <pi-input
           type="number"
           :max="totalPages"
           :min="1"
-          :value="jumperNumber"
+          :modelValue="jumperNumber"
           @inputKeyup="handleClickPager"
           disabled-clear
           :size="size"
           :id="goPagesId"
-        /> -->
+        />
       </label>
     </div>
   </div>
@@ -175,12 +175,12 @@ const syncPageSize = computed({
   }
 })
 const totalPages = computed(() => Math.ceil(props.total / syncPageSize.value));
-const prevPage = computed(() => syncCurrentPage.value - 1);
-const nextPage = computed(() => syncCurrentPage.value + 1);
+const prevPage = computed(() => props.currentPage - 1);
+const nextPage = computed(() => props.currentPage + 1);
 const jumperNumber = ref(syncCurrentPage.value);
 const pagers = computed(() => {
-  const pagerStart = (Math.ceil(syncCurrentPage.value / props.pagerCount) - 1) * props.pagerCount + 1;
-  const pagerEnd = (Math.ceil(syncCurrentPage.value / props.pagerCount) - 1) * props.pagerCount + props.pagerCount;
+  const pagerStart = (Math.ceil(props.currentPage / props.pagerCount) - 1) * props.pagerCount + 1;
+  const pagerEnd = (Math.ceil(props.currentPage / props.pagerCount) - 1) * props.pagerCount + props.pagerCount;
   const pagers = [];
   for (let i = pagerStart; i <= pagerEnd; i++) {
     if (i <= totalPages.value) {
@@ -195,14 +195,13 @@ const pagers = computed(() => {
 // };
 
 const emit = defineEmits(['update:currentPage','sync-page-param', 'change:page']);
-// const emit = defineEmits([ 'input', 'blur', 'change', 'update:modelValue' ])
 
 const handleClickPager = (page) => {
   if (page > 0 && page <= totalPages.value) {
-    syncCurrentPage.value = page;
-    emit('update:currentPage', page);
-    emit('sync-page-param', { syncCurrentPage: page });
-    emit('change:page', page);
+    syncCurrentPage.value = page
+    emit('update:currentPage',  Number(page));
+    emit('sync-page-param', { currentPage: Number(page) });
+    emit('change:page', Number(page));
   }
   // else {
   //   PiMsg({
@@ -222,7 +221,7 @@ onMounted(()=>{
 
 </script>
 
-<style>
+<style scoped>
 .pi-pagination-group {
   color: oklch(var(--pagination-color));
   display: flex;
@@ -231,6 +230,19 @@ onMounted(()=>{
   gap: 1rem;
   @media screen and (width <= 768px) {
     flex-direction: column;
+  }
+}
+.pi-pagination-group__item--jump {
+  & label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .pi-input-box {
+    width: 6rem;
+    &.pi-input-box--large {
+      width: 10rem;
+    }
   }
 }
 .pi-pagination {

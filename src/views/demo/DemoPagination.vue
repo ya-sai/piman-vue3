@@ -91,8 +91,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-//@ts-ignore
-// import { PiInput} from "/dist/piman-vue3.es";
 
 const totalPages = ref(100)
 const currentPage = ref(2)
