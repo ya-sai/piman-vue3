@@ -19,13 +19,59 @@
           :pageSizeOptions="pageSizeOptions"
           not yet
         -->
-        <pi-pagination
-          :total="totalPages"
-          v-model:current-page="currentPage"
-          :pager-count="pagerCount"
-          @change:page="onChangePage"
-          :pageSize="pageSize"
-        />
+        <section>
+          <h3>Size</h3>
+          <pi-pagination
+            :total="totalPages"
+            v-model:current-page="currentPage"
+            :pager-count="pagerCount"
+            @change:page="onChangePage"
+            :pageSize="pageSize"
+            size="small"
+          />
+          <pi-pagination
+            :total="totalPages"
+            v-model:current-page="currentPage"
+            :pager-count="pagerCount"
+            @change:page="onChangePage"
+            :pageSize="pageSize"
+          />
+          <pi-pagination
+            :total="totalPages"
+            v-model:current-page="currentPage"
+            :pager-count="pagerCount"
+            @change:page="onChangePage"
+            :pageSize="pageSize"
+            size="large"
+          />
+        </section>
+        <section>
+          <h3>Change Text</h3>
+          <pi-pagination
+            :total="totalPages"
+            v-model:current-page="currentPage"
+            :pager-count="pagerCount"
+            @change:page="onChangePage"
+            :pageSize="pageSize"
+          >
+            <template v-slot:first-page-text>最前</template>
+            <template v-slot:prev-page-text>往前</template>
+            <template v-slot:next-page-text>往後</template>
+            <template v-slot:last-page-text>最後</template>
+          </pi-pagination>
+        </section>
+        <section>
+          <h3>Layout</h3>
+          <p>:layout="['total_item', 'total_page', 'page_size', 'first', 'last', 'jump']"</p>
+          <pi-pagination
+            :total="totalPages"
+            v-model:current-page="currentPage"
+            :pager-count="pagerCount"
+            @change:page="onChangePage"
+            :pageSize="pageSize"
+            :layout="[]"
+          />
+        </section>
       </section>
     </div>
   </div>

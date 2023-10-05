@@ -220,3 +220,39 @@ onMounted(()=>{
 })
 
 </script>
+
+<style>
+.pi-pagination-group {
+  color: oklch(var(--pagination-color));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  @media screen and (width <= 768px) {
+    flex-direction: column;
+  }
+}
+.pi-pagination {
+  & ul {
+    display: flex;
+    gap: 1rem;
+    & li {
+      &:not(.current){
+        @media screen and (width <= 768px) {
+          display: none;
+        }
+      }
+      &.prev,
+      &.next {
+        @media screen and (width <= 768px) {
+          display: block;
+        }
+      }
+    }
+  }
+  .pi-btn {
+    min-width: 3rem;
+    text-align: center;
+  }
+}
+</style>
