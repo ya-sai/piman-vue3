@@ -166,8 +166,14 @@ const props = defineProps ({
 const { t } = useI18n()
 const goPagesId = ref('')
 const syncCurrentPage = ref(props.currentPage);
-const syncPageSize = ref(10);
-
+const syncPageSize = computed({
+  get() {
+    return props.pageSize
+  },
+  set(newValue : number){
+    return newValue
+  }
+})
 const totalPages = computed(() => Math.ceil(props.total / syncPageSize.value));
 const prevPage = computed(() => syncCurrentPage.value - 1);
 const nextPage = computed(() => syncCurrentPage.value + 1);
