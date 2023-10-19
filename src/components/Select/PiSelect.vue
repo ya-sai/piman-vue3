@@ -167,6 +167,7 @@ import useI18n from "@/locales/useI18n"
 import { generateId } from '@/utils/generateId'
 import useClickOutside from "@/composables/useClickOutside"
 import FocusTrap from '@/composables/useFocusTrap'
+import PiButton from '../Button/PiButton.vue'
 
 
 interface ThisData {
@@ -210,7 +211,7 @@ const props = defineProps({
     type: Array,
     required: true,
   },
-  modelValue: [ String, Number, Array ],
+  value: [ String, Number, Array ],
   multiple: [ String ],
   placeholder: String,
   disabledClear: {
@@ -228,7 +229,7 @@ const emit = defineEmits([ 'search', 'input', 'blur', 'change', 'toggleSlotItem'
 const { t } = useI18n()
 
 const refPiSelect = ref(null)
-const refOpenBtn = ref(null)
+const refOpenBtn = ref<InstanceType<typeof PiButton> | null>(null);
 const refListbox = ref(null)
 const refSelectSearch = ref(null)
 const listboxOpen = ref(false)
@@ -267,8 +268,8 @@ const onSearch = () => {
 const resetTrap = (firstFocus: HTMLElement) => {
   nextTick(()=>{
     if(trap.value) trap.value.dismiss()
-    const list: HTMLElement = refListbox as unknown as HTMLElement
-    trap.value = new FocusTrap([refPiSelect as unknown as HTMLElement, list], firstFocus)
+    const list: HTMLElement = refListbox.value as unknown as HTMLElement
+    trap.value = new FocusTrap([refPiSelect.value as unknown as HTMLElement, list], firstFocus)
   })
 }
 
@@ -294,15 +295,13 @@ const handleClearSelected = ()=> {
 }
 
 const handleClickOption = (item: {value: any, label: string}, index: number, parentIndex: number, group: boolean) => {
-  selectedId.value = group ? `${(this as any).fixId}-optgroup-${parentIndex}-option-${index}` : `${(this as any).fixId}-option-${index}`;
+  selectedId.value = group ? `${fixId.value}-optgroup-${parentIndex}-option-${index}` : `${fixId.value}-option-${index}`;
   if(props.multiple === undefined){
-    // this.selected = item;
     close()
     selectedVal.value = item.value;
-    // document.getElementById((this as any).fixId)?.focus();
   }
   else {
-    let arr = selectedVal.value.map(s=>s.value)
+    let arr = selectedVal.value.map(s=>(s as any).value)
     let idx = arr.indexOf(item.value)
     if(idx >= 0) {
       arr.splice(idx, 1)
@@ -334,14 +333,13 @@ const handleEsc = (e: KeyboardEvent) => {
 
 const close = () => {
   listboxOpen.value = false
-  const list: HTMLElement = refListbox as unknown as HTMLElement
-  const btn: HTMLButtonElement = refOpenBtn as unknown as HTMLButtonElement
+  const list: HTMLElement = refListbox.value as unknown as HTMLElement
 
   if(trap.value){
     trap.value.dismiss()
     trap.value = null as any
   }
-  btn.focus()
+  refOpenBtn.value?.$el.focus()
   document.body.removeChild(list)
   
   if(formItem.value) formItem.value.emit('blur')
@@ -355,22 +353,22 @@ const close = () => {
 
 const open = () => {
   listboxOpen.value = true
-  const list: HTMLElement = refListbox as unknown as HTMLElement
-  const btn: HTMLButtonElement = refOpenBtn as unknown as HTMLButtonElement
+  
+  const list: HTMLElement = refListbox.value as unknown as HTMLElement
 
   document.body.appendChild(list)
-  trap.value = new FocusTrap([refPiSelect as unknown as HTMLElement, list])
+  trap.value = new FocusTrap([refPiSelect.value as unknown as HTMLElement, list])
 
-  const coor = btn.getBoundingClientRect()
-  list.style.top = window.pageYOffset + coor.top + coor.height + 'px'
-    // listbox min-width = 8rem
-  const totalWidthOfDropdown = coor.left + (16 * 8)
-  if((totalWidthOfDropdown > document.body.clientWidth) && (coor.width < 16 * 8)) {
-      list.style.right = "0"
-      list.style.width = "auto"
-  }else {
-    list.style.left = coor.left + 'px'
-    list.style.width = props.optionWidth || coor.width + 'px'
+  const coor = refOpenBtn.value?.$el.getBoundingClientRect()
+
+  list.style.top = `${window.scrollY + coor.top + coor.height}px`;
+  const totalWidthOfDropdown = coor.left + (16 * 8);
+  if (totalWidthOfDropdown > document.body.clientWidth && coor.width < 16 * 8) {
+    list.style.right = "0";
+    list.style.width = "auto";
+  } else {
+    list.style.left = `${coor.left}px`;
+    list.style.width = props.optionWidth || `${coor.width}px`;
   }
 
   document.addEventListener('keyup', handleEsc)
@@ -389,11 +387,11 @@ const selectedVal = computed({
         .find(o => {
           if((o as OptionGroup).type === 'group'){
             const found = (o as OptionGroup).options
-              .find(subO => subO.value === props.modelValue )
+              .find(subO => subO.value === props.value )
             if(found) groupOpt = found
           }
           else {
-            return (o as Option).value === props.modelValue
+            return (o as Option).value === props.value
           }
         })
         
@@ -408,17 +406,17 @@ const selectedVal = computed({
           groupOpts = groupOpts.concat(found)
         }
         else {
-          return (props.modelValue as Array<string|number>).includes((o as Option).value)
+          return (props.value as Array<string|number>).includes((o as Option).value)
         }
       })
       return opt.concat(groupOpts)
     }
   },
   set: (val) => {
-    (this as any).emit('input', val)
-    if((this as any).formItem){
-      (this as any).$nextTick(()=>{
-        (this as any).formItem!.emit('change', val)
+    emit('input', val)
+    if(formItem.value){
+      nextTick(()=>{
+        formItem.value!.emit('change', val)
       })
     }
   }
@@ -444,7 +442,7 @@ const innerOptions = computed(()=> {
     if((opt as OptionGroup).type === 'group'){
       let subOpts =  (opt as OptionGroup).options.map(subO => {
         return {
-          checked: selectedVal.value.map(s=>s.value).includes(subO.value),
+          checked: selectedVal.value.map(s=>(s as any).value).includes(subO.value),
           ...subO
         }
       })
@@ -504,12 +502,13 @@ watch(optionsLength, (newValue, oldValue) => {
 
 onMounted(() => {
   if(props.id) {
-    fixId.value = 'bpa-select-' + props.id
+    fixId.value = 'pi-select-' + props.id
   } else {
-    fixId.value = 'bpa-select-' + generateId() // 假設 generateId 是一個可用的函數
+    fixId.value = 'pi-select-' + generateId() // 假設 generateId 是一個可用的函數
   }
 
   const list: HTMLElement = ref('refListbox') as unknown as HTMLElement
+
   if (vcoIntercept.value) {
     vcoIntercept.value.emit('mountVcoItem', list)
   }
@@ -521,3 +520,192 @@ onBeforeUnmount(() => {
   }
 })
 </script>
+
+<style scoped>
+.pi-select {
+  position: relative;
+}
+
+.pi-select-btn {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding-right: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-width: 0 0.1875rem 0.1875rem 0;
+    width: 0.625rem;
+    height: 0.625rem;
+    right: 1.25rem;
+    top: calc(50% - 0.40625rem);
+    transform: rotate(45deg);
+    transition: transform 160ms ease-in;
+  }
+  &.pi-select-btn--open {
+    & [data-icon="chevron-down"] {
+      transform: rotate3d(0, 0, 1, -180deg);
+    }
+    &:after {
+      top: calc(50% - 4px);
+      transform: rotate(225deg);
+    }
+  }
+  &.pi-btn--small {
+    padding-right: 2.5rem;
+    img {
+      max-height: 1rem;
+    }
+  }
+  &.pi-btn--large {
+    padding-right: 2.5rem;
+  }
+  & .pi-select-text  {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    flex: 1 0 0%;
+    @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none){
+      flex: auto;
+    }
+    & .pi-badge {
+      margin-left: var(--spacing-xxs);
+    }
+  }
+
+  img {
+    max-height: 1.5rem;
+  }
+  & .multiple-label {
+    &:not(:last-child){
+      &:after {
+        content: ',';
+        margin-right: 2.5rem
+      }
+    }
+  }
+  & .pi-select-clear-btn {
+    font-size: 0.875rem;
+    color: oklch(var(--color-gray-500));
+    transition: opacity 160ms ease-in;
+    padding: 0 var(--spacing-xxs);
+    &:hover {
+      opacity: 0.8;
+    }
+    &:active {
+      opacity: 1;
+    }
+    &:focus {
+      box-shadow: inset 0 0 0 3px oklch(var(--color-focus));
+    }
+  }
+}
+
+.pi-select-popup {
+  display: none;
+  position: absolute;
+  padding: var(--spacing-xs) 0;
+  max-width: 100vw;
+  min-width: 8rem;
+  background-color: oklch(var(--color-white));
+  border: 1px solid oklch(var(--color-border));
+  border-radius: var(--radius);
+  box-shadow: var(--box-shadow);
+  max-height: 50vh;
+  overflow: auto;
+  & .toolbar {
+    padding: var(--spacing-xs) var(--spacing-m) var(--spacing-m);
+    display: flex;
+    > * {
+      flex: 1;
+      &:not(:last-of-type) {
+        margin-right: var(--spacing-m);
+      }
+    }
+  }
+  & [role="group"] {
+    position: relative;
+  }
+  & .optgroup-title {
+    position: sticky;
+    top: -0.5rem;
+    z-index: 1;
+    padding: var(--spacing-xxs) var(--spacing-m);
+    font-size: 0.75rem;
+    color: oklch(var(--color-gray-700));
+    background-color:  oklch(var(--color-white));
+    border-top: 1px solid oklch(var(--color-border));
+    border-bottom: 1px solid oklch(var(--color-border));
+  }
+  & [role="option"] {
+    cursor: pointer;
+    padding: var(--spacing-xs) var(--spacing-m);
+    color:  oklch(var(--color-black));
+    transition: background-color 160ms ease-in;
+    &:hover {
+      background-color: oklch(var(--color-gray-100));
+    }
+    &:active {
+      background-color: oklch(var(--color-gray-200));
+    }
+    &:focus {
+      background-color: oklch(var(--color-gray-200));
+    }
+    a {
+      margin: -0.5rem -1rem;
+      padding: var(--spacing-xs) var(--spacing-m);
+      display: block;
+      color: oklch(var(--color-black));
+      &:hover {
+        background-color: oklch(var(--color-gray-100));
+        opacity: 1;
+      }
+      &:active {
+        background-color: oklch(var(--color-gray-200));
+      }
+      &:focus {
+        outline: auto;
+        outline-color: -webkit-focus-ring-color;
+        background-color: oklch(var(--color-gray-100));
+      }
+    }
+    &.option-checked {
+      background-color: oklch(var(--color-white));
+      color: oklch(var(--color-primary-600));
+      position: relative;
+      &:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 0.4rem;
+        right: 0px;
+        transform: translate3d(-1.1875rem, 0.25rem, 0) rotate(45deg);
+        width: 0.4rem;
+        height: 0.65rem;
+        border: solid oklch(var(--color-border));
+        border-width: 0 2px 2px 0;
+        opacity: 1;
+        transition: opacity 120ms ease-in;
+      }
+      &:hover {
+        background-color: oklch(var(--color-primary-bg));
+        color: oklch(var(--color-primary-600));
+      }
+      &:active,
+      &:focus {
+        background-color: oklch(var(--color-primary-100));
+        color: oklch(var(--color-primary-700));
+      }
+    }
+  }
+  &.pi-select-popup--open {
+    display: block;
+  }
+}
+
+</style>

@@ -249,6 +249,15 @@
   --radio-border-active-color: var(--color-primary-500);
   --radio-border-focus-color: var(--color-focus);
 
+  /* Select */
+  --select-color: var(--color-black);
+  --select-bg: var(--color-white);
+  --select-hover-bg: var(--color-gray-100);
+  --select-active-bg: var(--color-gray-200);
+  --select-error-bg: var(--color-white);
+  --select-error-color: var(--color-black);
+  --select-error-border-color: var(--color-danger-500);
+
   /* Switch */
   --switch-checked-bg: var(--color-primary-500);
   --switch-unchecked-bg: var(--color-gray-200);
@@ -401,6 +410,15 @@
     --radio-border-hover-color: var(--color-primary-500);
     --radio-border-active-color: var(--color-primary-500);
     --radio-border-focus-color: var(--color-focus);
+
+     /* Select */
+    --select-color: var(--color-black);
+    --select-bg: var(--color-white);
+    --select-hover-bg: var(--color-gray-100);
+    --select-active-bg: var(--color-gray-200);
+    --select-error-bg: var(--color-danger-800);
+    --select-error-color: var(--color-whitek);
+    --select-error-border-color: var(--color-danger-500);
 
     /* Switch */
     --switch-checked-bg: var(--color-primary-300);
