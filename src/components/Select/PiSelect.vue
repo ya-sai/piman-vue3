@@ -41,7 +41,8 @@
         </template>
         <span
           v-else
-          v-for="item in selectedVal" :key="item.value"
+          v-for="item in selectedVal"
+          :key="item.value"
           class="multiple-label"
         >
           {{ item.label }}
@@ -204,6 +205,7 @@ interface Option {
   label: string,
 }
 
+const { t } = useI18n()
 const props = defineProps({
   id: String,
   theme: String,
@@ -226,16 +228,15 @@ const props = defineProps({
 })
 const emit = defineEmits([ 'search', 'input', 'blur', 'change', 'toggleSlotItem', 'mountVcoItem' ])
 
-const { t } = useI18n()
-
+// refs
 const refPiSelect = ref(null)
 const refOpenBtn = ref<InstanceType<typeof PiButton> | null>(null);
 const refListbox = ref(null)
 const refSelectSearch = ref(null)
+
+// State
 const listboxOpen = ref(false)
 const selectedId = ref('')
-// selected: this.label ? this.label : this.options.length > 0 ? this.options[0] : null,
-const trap = ref(null)
 const fixId = ref(generateId());
 const keyword = ref('')
 const searchInput = ref('')
@@ -243,142 +244,10 @@ const debounce = reactive({
   timer: undefined,
   wait: 800
 })
-const addedOptions = ref([])
 
+const trap = ref(null)
 
-const debounceSearch = () => {
-  if(debounce.timer) { 
-    clearTimeout(debounce.timer)
-  }
-  debounce.timer = setTimeout(() => {
-    onSearch()
-  }, debounce.wait);
-}
-
-const onSearch = () => {
-  if(emit && emit.search) {
-    emit('search', searchInput.value)
-  }
-  else {
-    keyword.value = searchInput.value
-    resetTrap(refSelectSearch.value as unknown as HTMLElement)
-  }
-}
-
-const resetTrap = (firstFocus: HTMLElement) => {
-  nextTick(()=>{
-    if(trap.value) trap.value.dismiss()
-    const list: HTMLElement = refListbox.value as unknown as HTMLElement
-    trap.value = new FocusTrap([refPiSelect.value as unknown as HTMLElement, list], firstFocus)
-  })
-}
-
-const checkInsideList = (event: Event) => {
-  const list: HTMLElement = refListbox as unknown as HTMLElement
-  return !list.contains(event.target as Node)
-}
-
-const handleClickSelect = () => {
-  if(props.disabled) return
-  if(listboxOpen.value) close()
-  else open()
-}
-
-const handleClearSelected = ()=> {
-  innerOptions.forEach(o => o.checked = false)
-  const val = props.multiple === undefined ? '' : []
-  emit('input', val);
-  if(formItem.value) formItem.value.emit('change', val)
-  // this.selected = '';
-  selectedId.value = '';
-  document.getElementById((this as any).fixId+'-btn')!.focus();
-}
-
-const handleClickOption = (item: {value: any, label: string}, index: number, parentIndex: number, group: boolean) => {
-  selectedId.value = group ? `${fixId.value}-optgroup-${parentIndex}-option-${index}` : `${fixId.value}-option-${index}`;
-  if(props.multiple === undefined){
-    close()
-    selectedVal.value = item.value;
-  }
-  else {
-    let arr = selectedVal.value.map(s=>(s as any).value)
-    let idx = arr.indexOf(item.value)
-    if(idx >= 0) {
-      arr.splice(idx, 1)
-      selectedVal.value = arr as any
-    }
-    else {
-      arr.push(item.value)
-      selectedVal.value = arr as any
-    }
-  }
-}
-
-const onKeypress = (evt: KeyboardEvent) => {
-  if( evt.target ) (evt.target as HTMLElement).click()
-}
-
-const handleClickOutside = () => {
-  if(listboxOpen.value) close()
-}
-
-const vcoConfig = reactive({
-  handler: handleClickOutside,
-  middleware: checkInsideList
-})
-
-const handleEsc = (e: KeyboardEvent) => {
-  if(e.key === 'Escape' || e.keyCode === 27) close()
-}
-
-const close = () => {
-  listboxOpen.value = false
-  const list: HTMLElement = refListbox.value as unknown as HTMLElement
-
-  if(trap.value){
-    trap.value.dismiss()
-    trap.value = null as any
-  }
-  refOpenBtn.value?.$el.focus()
-  document.body.removeChild(list)
-  
-  if(formItem.value) formItem.value.emit('blur')
-
-  document.removeEventListener('keyup', handleEsc)
-
-  if(vcoIntercept.value){
-    vcoIntercept.value.emit('toggleSlotItem', false, this)
-  }
-}
-
-const open = () => {
-  listboxOpen.value = true
-  
-  const list: HTMLElement = refListbox.value as unknown as HTMLElement
-
-  document.body.appendChild(list)
-  trap.value = new FocusTrap([refPiSelect.value as unknown as HTMLElement, list])
-
-  const coor = refOpenBtn.value?.$el.getBoundingClientRect()
-
-  list.style.top = `${window.scrollY + coor.top + coor.height}px`;
-  const totalWidthOfDropdown = coor.left + (16 * 8);
-  if (totalWidthOfDropdown > document.body.clientWidth && coor.width < 16 * 8) {
-    list.style.right = "0";
-    list.style.width = "auto";
-  } else {
-    list.style.left = `${coor.left}px`;
-    list.style.width = props.optionWidth || `${coor.width}px`;
-  }
-
-  document.addEventListener('keyup', handleEsc)
-
-  if(vcoIntercept.value){
-    vcoIntercept.value.emit('toggleSlotItem', true, this)
-  }
-}
-
-
+// Computed
 const selectedVal = computed({
   get: () => {
     if(props.multiple === undefined){
@@ -421,6 +290,139 @@ const selectedVal = computed({
     }
   }
 })
+
+
+const debounceSearch = () => {
+  if(debounce.timer) { 
+    clearTimeout(debounce.timer)
+  }
+  debounce.timer = setTimeout(() => {
+    onSearch()
+  }, debounce.wait);
+}
+
+const onSearch = () => {
+  if(emit && emit.search) {
+    emit('search', searchInput.value)
+  }
+  else {
+    keyword.value = searchInput.value
+    resetTrap(refSelectSearch.value as unknown as HTMLElement)
+  }
+}
+
+const resetTrap = (firstFocus: HTMLElement) => {
+  nextTick(()=>{
+    if(trap.value) trap.value.dismiss()
+    const list: HTMLElement = refListbox.value as unknown as HTMLElement
+    trap.value = new FocusTrap([refPiSelect.value as unknown as HTMLElement, list], firstFocus)
+  })
+}
+
+const handleClickSelect = () => {
+  props.disabled ? null : listboxOpen.value ? close() : open();
+}
+
+const checkInsideList = (event: Event) => {
+  const list: HTMLElement = refListbox as unknown as HTMLElement
+  return !list.contains(event.target as Node)
+}
+
+const handleClearSelected = ()=> {
+  innerOptions.value.forEach(o => o.checked = false)
+  const val = props.multiple === undefined ? '' : []
+  emit('input', val);
+  if(formItem.value) formItem.value.emit('change', val)
+  selectedId.value = '';
+  document.getElementById(fixId.value+'-btn')!.focus();
+}
+
+const handleClickOption = (item: {value: any, label: string}, index: number, parentIndex: number, group: boolean) => {
+  selectedId.value = group ? `${fixId.value}-optgroup-${parentIndex}-option-${index}` : `${fixId.value}-option-${index}`;
+  if(props.multiple === undefined){
+    close()
+    selectedVal.value = item.value;
+  }
+  else {
+    let arr = selectedVal.value.map(s=>(s as any).value)
+    let idx = arr.indexOf(item.value)
+    if(idx >= 0) {
+      arr.splice(idx, 1)
+      selectedVal.value = arr as any
+    }
+    else {
+      arr.push(item.value)
+      selectedVal.value = arr as any
+    }
+  }
+}
+
+const onKeypress = (evt: KeyboardEvent) => {
+  if( evt.target ) (evt.target as HTMLElement).click()
+}
+
+const handleClickOutside = () => {
+  if(listboxOpen.value) close()
+}
+
+const vcoConfig = reactive({
+  handler: handleClickOutside,
+  middleware: checkInsideList
+})
+
+const handleEsc = (e: KeyboardEvent) => {
+  if(e.key === 'Escape' || e.keyCode === 27) close()
+}
+
+const close = () => {
+  listboxOpen.value = false
+
+  const list: HTMLElement = refListbox.value as unknown as HTMLElement
+
+  if(trap.value){
+    trap.value.dismiss()
+    trap.value = null as any
+  }
+
+  refOpenBtn.value?.$el.focus()
+  
+  document.body.removeChild(list)
+  
+  if(formItem.value) formItem.value.emit('blur')
+
+  document.removeEventListener('keyup', handleEsc)
+
+  if(vcoIntercept.value){
+    vcoIntercept.value.emit('toggleSlotItem', false, this)
+  }
+}
+
+const open = () => {
+  listboxOpen.value = true
+  
+  const list: HTMLElement = refListbox.value as unknown as HTMLElement
+
+  document.body.appendChild(list)
+  trap.value = new FocusTrap([refPiSelect.value as unknown as HTMLElement, list])
+
+  const coor = refOpenBtn.value?.$el.getBoundingClientRect()
+
+  list.style.top = `${window.scrollY + coor.top + coor.height}px`;
+  const totalWidthOfDropdown = coor.left + (16 * 8);
+  if (totalWidthOfDropdown > document.body.clientWidth && coor.width < 16 * 8) {
+    list.style.right = "0";
+    list.style.width = "auto";
+  } else {
+    list.style.left = `${coor.left}px`;
+    list.style.width = props.optionWidth || `${coor.width}px`;
+  }
+
+  document.addEventListener('keyup', handleEsc)
+
+  if(vcoIntercept.value){
+    vcoIntercept.value.emit('toggleSlotItem', true, this)
+  }
+}
 
 const formItem = computed(()=> {
   const self = getCurrentInstance()
@@ -515,9 +517,9 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  if (listboxOpen.value) {
-    close()
-  }
+  const list = refListbox.value;
+  document.body.removeChild(list);
+  document.removeEventListener('keyup', handleEsc);
 })
 </script>
 
