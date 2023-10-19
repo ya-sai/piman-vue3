@@ -219,7 +219,7 @@
   --input-error-bg: var(--color-white);
   --input-has-content-color: var(--color-black);
   --input-has-content-error-color: var(--color-danger-600);
-  --input-error-btn-color: var(--color-black);
+  /* --input-error-btn-color: var(--color-black); */
   --input-btn-color: var(--color-black);
   --input-clear-btn-color: var(--color-gray-500);
   --input-error-clear-btn-color: var(--color-gray-500);
@@ -372,7 +372,7 @@
     --input-error-bg: var(--color-danger-800);
     --input-has-content-color: var(--color-black);
     --input-has-content-error-color: var(--color-white);
-    --input-error-btn-color: var(--color-white);
+    /* --input-error-btn-color: var(--color-white); */
     --input-btn-color: var(--color-black);
     --input-clear-btn-color: var(--color-gray-500);
     --input-error-clear-btn-color: var(--color-white);
