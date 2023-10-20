@@ -65,7 +65,7 @@
         @keydown.enter.prevent.space="handleClearSelected"
         class="pi-select-clear-btn"
       >
-        <span aria-hidden="true">✖</span>
+        <span aria-hidden="true" :title="t('select.clear')">✖</span>
         <span class="visually-hidden">{{ t('select.clear') }}</span>
       </div>
     </pi-button>
@@ -213,7 +213,7 @@ const props = defineProps({
     type: Array,
     required: true,
   },
-  value: [ String, Number, Array ],
+  modelValue: [ String, Number, Array ],
   multiple: [ String ],
   placeholder: String,
   disabledClear: {
@@ -226,7 +226,7 @@ const props = defineProps({
   size: String,
   listboxClass: String,
 })
-const emit = defineEmits([ 'search', 'input', 'blur', 'change', 'toggleSlotItem', 'mountVcoItem' ])
+const emit = defineEmits([ 'search', 'update:modelValue', 'blur', 'change', 'toggleSlotItem', 'mountVcoItem' ])
 
 // refs
 const refPiSelect = ref(null)
@@ -256,11 +256,11 @@ const selectedVal = computed({
         .find(o => {
           if((o as OptionGroup).type === 'group'){
             const found = (o as OptionGroup).options
-              .find(subO => subO.value === props.value )
+              .find(subO => subO.value === props.modelValue )
             if(found) groupOpt = found
           }
           else {
-            return (o as Option).value === props.value
+            return (o as Option).value === props.modelValue
           }
         })
         
@@ -269,20 +269,20 @@ const selectedVal = computed({
     else {
       let groupOpts: Option[] = []
       const opt = props.options.filter(o => {
-        if((o as OptionGroup).type === 'group'){
+        if((o as OptionGroup).type === 'group' && Array.isArray(props.modelValue)) {
           const found = (o as OptionGroup).options
-            .filter( subO => (this as any).value.includes(subO.value))
+            .filter( subO => props.modelValue.includes(subO.value))
           groupOpts = groupOpts.concat(found)
         }
-        else {
-          return (props.value as Array<string|number>).includes((o as Option).value)
+        else if (Array.isArray(props.modelValue)) {
+          return (props.modelValue as Array<string | number>).includes((o as Option).value)
         }
       })
       return opt.concat(groupOpts)
     }
   },
   set: (val) => {
-    emit('input', val)
+    emit('update:modelValue', val)
     if(formItem.value){
       nextTick(()=>{
         formItem.value!.emit('change', val)
@@ -296,10 +296,9 @@ const debounceSearch = () => {
   if(debounce.timer) { 
     clearTimeout(debounce.timer)
   }
-  debounce.timer = setTimeout(() => {
-    onSearch()
-  }, debounce.wait);
+  debounce.timer = setTimeout(onSearch, debounce.wait)
 }
+
 
 const onSearch = () => {
   if(emit && emit.search) {
@@ -320,7 +319,8 @@ const resetTrap = (firstFocus: HTMLElement) => {
 }
 
 const handleClickSelect = () => {
-  props.disabled ? null : listboxOpen.value ? close() : open();
+  if (props.disabled) return;
+  listboxOpen.value ? close() : open();
 }
 
 const checkInsideList = (event: Event) => {
@@ -331,7 +331,7 @@ const checkInsideList = (event: Event) => {
 const handleClearSelected = ()=> {
   innerOptions.value.forEach(o => o.checked = false)
   const val = props.multiple === undefined ? '' : []
-  emit('input', val);
+  emit('update:modelValue', val)
   if(formItem.value) formItem.value.emit('change', val)
   selectedId.value = '';
   document.getElementById(fixId.value+'-btn')!.focus();
@@ -375,6 +375,9 @@ const handleEsc = (e: KeyboardEvent) => {
 }
 
 const close = () => {
+  // 確保 close 方法可以在下拉列表沒有打開的情況下安全地被呼叫。
+  if (!listboxOpen.value) return;
+
   listboxOpen.value = false
 
   const list: HTMLElement = refListbox.value as unknown as HTMLElement
@@ -398,6 +401,9 @@ const close = () => {
 }
 
 const open = () => {
+
+  close()
+
   listboxOpen.value = true
   
   const list: HTMLElement = refListbox.value as unknown as HTMLElement
@@ -509,7 +515,7 @@ onMounted(() => {
     fixId.value = 'pi-select-' + generateId() // 假設 generateId 是一個可用的函數
   }
 
-  const list: HTMLElement = ref('refListbox') as unknown as HTMLElement
+  const list: HTMLElement = refListbox.value as unknown as HTMLElement
 
   if (vcoIntercept.value) {
     vcoIntercept.value.emit('mountVcoItem', list)
@@ -548,63 +554,66 @@ onBeforeUnmount(() => {
     transform: rotate(45deg);
     transition: transform 160ms ease-in;
   }
-  &.pi-select-btn--open {
-    & [data-icon="chevron-down"] {
-      transform: rotate3d(0, 0, 1, -180deg);
-    }
-    &:after {
-      top: calc(50% - 4px);
-      transform: rotate(225deg);
-    }
+  & img {
+    max-height: 1.5rem;
   }
   &.pi-btn--small {
     padding-right: 2.5rem;
-    img {
+    & img {
       max-height: 1rem;
     }
   }
   &.pi-btn--large {
     padding-right: 2.5rem;
   }
-  & .pi-select-text  {
-    display: block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    flex: 1 0 0%;
-    @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none){
-      flex: auto;
-    }
-    & .pi-badge {
-      margin-left: var(--spacing-xxs);
+  &.pi-select-btn--open {
+    /* & [data-icon="chevron-down"] {
+      transform: rotate3d(0, 0, 1, -180deg);
+    } */
+    &:after {
+      top: calc(50% - 4px);
+      transform: rotate(225deg);
     }
   }
+}
 
-  img {
-    max-height: 1.5rem;
-  }
-  & .multiple-label {
-    &:not(:last-child){
-      &:after {
-        content: ',';
-        margin-right: 2.5rem
-      }
+.multiple-label {
+  &:not(:last-child){
+    &:after {
+      content: ',';
+      margin-right: var(--spacing-xs);
     }
   }
-  & .pi-select-clear-btn {
-    font-size: 0.875rem;
-    color: oklch(var(--color-gray-500));
-    transition: opacity 160ms ease-in;
-    padding: 0 var(--spacing-xxs);
-    &:hover {
-      opacity: 0.8;
-    }
-    &:active {
-      opacity: 1;
-    }
-    &:focus {
-      box-shadow: inset 0 0 0 3px oklch(var(--color-focus));
-    }
+}
+
+.pi-select-text  {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1 0 0%;
+  @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none){
+    flex: auto;
+  }
+}
+
+.pi-badge {
+  margin-left: var(--spacing-xxs);
+}
+
+.pi-select-clear-btn {
+  font-size: 0.875rem;
+  color: oklch(var(--color-gray-500));
+  transition: opacity 160ms ease-in;
+  padding: 0 var(--spacing-xxs);
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 1;
+  }
+  &:focus {
+    box-shadow: inset 0 0 0 3px oklch(var(--color-focus));
   }
 }
 
@@ -623,6 +632,7 @@ onBeforeUnmount(() => {
   & .toolbar {
     padding: var(--spacing-xs) var(--spacing-m) var(--spacing-m);
     display: flex;
+    border-bottom: 1px solid oklch(var(--color-border));
     > * {
       flex: 1;
       &:not(:last-of-type) {
@@ -630,7 +640,7 @@ onBeforeUnmount(() => {
       }
     }
   }
-  & [role="group"] {
+  [role="group"] {
     position: relative;
   }
   & .optgroup-title {
@@ -644,7 +654,7 @@ onBeforeUnmount(() => {
     border-top: 1px solid oklch(var(--color-border));
     border-bottom: 1px solid oklch(var(--color-border));
   }
-  & [role="option"] {
+  [role="option"] {
     cursor: pointer;
     padding: var(--spacing-xs) var(--spacing-m);
     color:  oklch(var(--color-black));
@@ -658,7 +668,7 @@ onBeforeUnmount(() => {
     &:focus {
       background-color: oklch(var(--color-gray-200));
     }
-    a {
+    & a {
       margin: -0.5rem -1rem;
       padding: var(--spacing-xs) var(--spacing-m);
       display: block;
@@ -689,7 +699,7 @@ onBeforeUnmount(() => {
         transform: translate3d(-1.1875rem, 0.25rem, 0) rotate(45deg);
         width: 0.4rem;
         height: 0.65rem;
-        border: solid oklch(var(--color-border));
+        border: solid oklch(var(--color-primary-600));
         border-width: 0 2px 2px 0;
         opacity: 1;
         transition: opacity 120ms ease-in;

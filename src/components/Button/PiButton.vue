@@ -422,6 +422,19 @@ defineProps({
   }
 }
 
+/deep/.pi-badge {
+  position: relative;
+  top: -1px;
+  padding: var(--spacing-xxxs) var(--spacing-xxs);
+  margin-left: var(--spacing-xxs);
+  line-height: 1.125;
+  border-radius: 1rem;
+  background-color: oklch(var(--color-badge-bg));
+  color: oklch(var(--color-badge-color));
+  font-size: 0.75rem;
+}
+
+
 .pi-btn-loading {
   display: inline-block;
   vertical-align: text-bottom;

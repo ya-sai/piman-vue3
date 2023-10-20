@@ -30,7 +30,7 @@
           <span v-if="tab.prefix"  :class="['tab-prefix', tab.prefix]"></span>
           <span>{{ tab.label }}</span>
           <span v-if="tab.affix" :class="['tab-affix', tab.affix]"></span>
-          <span v-if="tab.badge" class="badge" :aria-label="t('badge.pre') + tab.badge ">{{ tab.badge }}</span>
+          <span v-if="tab.badge" class="pi-badge" :aria-label="t('badge.pre') + tab.badge ">{{ tab.badge }}</span>
         </pi-button>
       </li>
     </ul>
@@ -134,17 +134,6 @@ const toKebabCase = (value:string) => {
     }
     .pi-btn {
       border-radius: 0;
-      & .badge {
-        position: relative;
-        top: -1px;
-        padding: var(--spacing-xxxs) var(--spacing-xxs);
-        margin-left: var(--spacing-xxs);
-        line-height: 1.125;
-        border-radius: 1rem;
-        background-color: oklch(var(--color-badge-bg));
-        color: oklch(var(--color-badge-color));
-        font-size: 0.75rem;
-      }
       & span {
         &.tab-prefix {
           margin-right: var(--spacing-xxs);

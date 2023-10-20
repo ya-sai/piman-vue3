@@ -193,8 +193,8 @@
             optionWidth="100px"
           />
         </section>
-        <!-- <section>
-          <h3>多選</h3>
+        <section>
+          <h3>Multiple</h3>
           <pi-select
             v-model="valueM"
             :options="options"
@@ -208,16 +208,16 @@
             :options="options"
             multiple="accordion"
           />
-        </section> -->
-        <!-- <section>
-          <h3>簡易搜尋</h3>
+        </section>
+        <section>
+          <h3>Simple Search(Filter)</h3>
           <pi-select
             v-model="valueM"
             :options="options"
             multiple
             :toolbar="['search']"
           />
-        </section> -->
+        </section>
     </div>
   </div>
 </template>
@@ -252,7 +252,7 @@ const options = [
   { label: 'label3', value: '43' },
 ]
 
-const value = ref('')
+const value = ref('1')
 const valueM = ref('')
 
 
