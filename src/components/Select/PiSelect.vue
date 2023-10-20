@@ -22,6 +22,7 @@
       ]"
     >
       <slot name="prefix"></slot>
+      <span class="visually-hidden">{{ t('select.hint') }}</span>
       <span
         v-if="selectedVal.length === 0"
         :id="`${fixId}-label-text`"
@@ -29,7 +30,6 @@
       >
         <span v-if="placeholder">{{ placeholder }}</span>
         <span v-else>{{ t('select.placeholder') }}</span>
-        <span class="visually-hidden">{{ t('select.hint') }}</span>
       </span>
       <span
         v-else-if="multiple !== undefined"
@@ -523,9 +523,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  const list = refListbox.value;
-  document.body.removeChild(list);
-  document.removeEventListener('keyup', handleEsc);
+  if(listboxOpen.value) close()
 })
 </script>
 
