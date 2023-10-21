@@ -323,6 +323,7 @@ const handleClickSelect = () => {
 // Click Select Button Outside
 const handleClickOutside = () => {
   const list: HTMLElement = refListbox.value as unknown as HTMLElement
+  // Check if options from the multiple-select have been clicked
   if(listboxOpen.value && !list.contains(event.target as Node)) {
     close()
   }
