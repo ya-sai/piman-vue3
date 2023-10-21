@@ -422,7 +422,7 @@ defineProps({
   }
 }
 
-/deep/.pi-badge {
+:deep(.pi-badge) {
   position: relative;
   top: -1px;
   padding: var(--spacing-xxxs) var(--spacing-xxs);

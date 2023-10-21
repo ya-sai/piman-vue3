@@ -1,9 +1,8 @@
 <template>
   <div
-    :id=fixId
     ref="refPiSelect"
+    :id=fixId
     class="pi-select"
-    v-click-outside="vcoConfig"
   >
     <pi-button
       type="button"
@@ -20,6 +19,7 @@
         'pi-select-btn',
         listboxOpen ? 'pi-select-btn--open' : '',
       ]"
+      :a11y="a11y"
     >
       <slot name="prefix"></slot>
       <span class="visually-hidden">{{ t('select.hint') }}</span>
@@ -58,7 +58,7 @@
       <slot name="affix"></slot>
       <div
         role="button"
-        v-if="selectedVal.length > 0 && disabledClear == false"
+        v-if="selectedVal.length > 0 && showClear == true"
         tabindex="0"
         @click.stop="handleClearSelected"
         @keydown.enter.prevent.stop="handleClearSelected"
@@ -168,8 +168,6 @@ import useI18n from "@/locales/useI18n"
 import { generateId } from '@/utils/generateId'
 import useClickOutside from "@/composables/useClickOutside"
 import FocusTrap from '@/composables/useFocusTrap'
-import PiButton from '../Button/PiButton.vue'
-
 
 interface ThisData {
   listboxOpen: boolean;
@@ -188,7 +186,6 @@ interface ThisData {
   close(): void;
   open(): void;
   handleEsc(): void;
-  checkInsideList(): boolean;
   handleClickOutside(): void;
   onSearch(): void;
   resetTrap(el: HTMLElement): void;
@@ -216,7 +213,7 @@ const props = defineProps({
   modelValue: [ String, Number, Array ],
   multiple: [ String ],
   placeholder: String,
-  disabledClear: {
+  showClear: {
     type: Boolean,
     default: false
   },
@@ -225,6 +222,7 @@ const props = defineProps({
   optionWidth: String,
   size: String,
   listboxClass: String,
+  a11y: Boolean,
 })
 const emit = defineEmits([ 'search', 'update:modelValue', 'blur', 'change', 'toggleSlotItem', 'mountVcoItem' ])
 
@@ -233,21 +231,18 @@ const refPiSelect = ref(null)
 const refOpenBtn = ref<InstanceType<typeof PiButton> | null>(null);
 const refListbox = ref(null)
 const refSelectSearch = ref(null)
-
-// State
 const listboxOpen = ref(false)
 const selectedId = ref('')
 const fixId = ref(generateId());
 const keyword = ref('')
 const searchInput = ref('')
+const trap = ref(null)
 const debounce = reactive({
   timer: undefined,
   wait: 800
 })
 
-const trap = ref(null)
-
-// Computed
+// Value
 const selectedVal = computed({
   get: () => {
     if(props.multiple === undefined){
@@ -291,7 +286,7 @@ const selectedVal = computed({
   }
 })
 
-
+// Search delay
 const debounceSearch = () => {
   if(debounce.timer) { 
     clearTimeout(debounce.timer)
@@ -299,7 +294,7 @@ const debounceSearch = () => {
   debounce.timer = setTimeout(onSearch, debounce.wait)
 }
 
-
+// Search
 const onSearch = () => {
   if(emit && emit.search) {
     emit('search', searchInput.value)
@@ -310,6 +305,7 @@ const onSearch = () => {
   }
 }
 
+// Focus Back to Select Button
 const resetTrap = (firstFocus: HTMLElement) => {
   nextTick(()=>{
     if(trap.value) trap.value.dismiss()
@@ -318,17 +314,25 @@ const resetTrap = (firstFocus: HTMLElement) => {
   })
 }
 
+// Click Select Button
 const handleClickSelect = () => {
   if (props.disabled) return;
   listboxOpen.value ? close() : open();
 }
 
-const checkInsideList = (event: Event) => {
-  const list: HTMLElement = refListbox as unknown as HTMLElement
-  return !list.contains(event.target as Node)
+// Click Select Button Outside
+const handleClickOutside = () => {
+  const list: HTMLElement = refListbox.value as unknown as HTMLElement
+  if(listboxOpen.value && !list.contains(event.target as Node)) {
+    close()
+  }
 }
 
-const handleClearSelected = ()=> {
+// Clickoutside Composable
+useClickOutside(refPiSelect, handleClickOutside)
+
+// Click Clear Button
+const handleClearSelected = () => {
   innerOptions.value.forEach(o => o.checked = false)
   const val = props.multiple === undefined ? '' : []
   emit('update:modelValue', val)
@@ -337,6 +341,7 @@ const handleClearSelected = ()=> {
   document.getElementById(fixId.value+'-btn')!.focus();
 }
 
+// Click Select Option Item
 const handleClickOption = (item: {value: any, label: string}, index: number, parentIndex: number, group: boolean) => {
   selectedId.value = group ? `${fixId.value}-optgroup-${parentIndex}-option-${index}` : `${fixId.value}-option-${index}`;
   if(props.multiple === undefined){
@@ -357,23 +362,17 @@ const handleClickOption = (item: {value: any, label: string}, index: number, par
   }
 }
 
+// Keyboard Click
 const onKeypress = (evt: KeyboardEvent) => {
   if( evt.target ) (evt.target as HTMLElement).click()
 }
 
-const handleClickOutside = () => {
-  if(listboxOpen.value) close()
-}
-
-const vcoConfig = reactive({
-  handler: handleClickOutside,
-  middleware: checkInsideList
-})
-
+// Keyboard Click: ESC 
 const handleEsc = (e: KeyboardEvent) => {
   if(e.key === 'Escape' || e.keyCode === 27) close()
 }
 
+// Close Select Options
 const close = () => {
   // 確保 close 方法可以在下拉列表沒有打開的情況下安全地被呼叫。
   if (!listboxOpen.value) return;
@@ -400,6 +399,7 @@ const close = () => {
   }
 }
 
+// Open Select Options
 const open = () => {
 
   close()
@@ -430,6 +430,7 @@ const open = () => {
   }
 }
 
+// Form and FormItem match
 const formItem = computed(()=> {
   const self = getCurrentInstance()
   if(!self) return null
@@ -445,6 +446,7 @@ const formItem = computed(()=> {
   return parent;
 })
 
+// ??
 const innerOptions = computed(()=> {
   let result = props.options.map((opt: OptionGroup|Option) => {
     if((opt as OptionGroup).type === 'group'){
@@ -474,6 +476,7 @@ const innerOptions = computed(()=> {
   return result
 })
 
+// Count
 const optionsLength = computed(() => {
   let opt = 0
   let groupOpt = 0
@@ -486,6 +489,7 @@ const optionsLength = computed(() => {
   return opt + groupOpt
 })
 
+// ??
 const vcoIntercept = computed(() => {
   const instance = getCurrentInstance();
   if (!instance) {
@@ -613,6 +617,12 @@ onBeforeUnmount(() => {
   &:focus {
     box-shadow: inset 0 0 0 3px oklch(var(--color-focus));
   }
+  .pi-btn--primary &,
+  .pi-btn--success &,
+  .pi-btn--warning &,
+  .pi-btn--danger & {
+    color: oklch(var(--color-white));
+  }
 }
 
 .pi-select-popup {
@@ -627,6 +637,7 @@ onBeforeUnmount(() => {
   box-shadow: var(--box-shadow);
   max-height: 50vh;
   overflow: auto;
+  z-index: 1;
   & .toolbar {
     padding: var(--spacing-xs) var(--spacing-m) var(--spacing-m);
     display: flex;
