@@ -31,9 +31,11 @@ export default function useClickOutside(
   }
   onMounted(() => {
     window.addEventListener('click', listener)
+    window.addEventListener('touchstart', listener);
   })
 
   onBeforeUnmount(() => {
     window.removeEventListener('click', listener)
+    window.removeEventListener('touchstart', listener);
   })
 }
