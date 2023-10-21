@@ -23,7 +23,7 @@
         @focus="handleFocus"
         @blur="handleBlur"
         @input="handleInput"
-        @keydown.stop.prevent.enter="handleKeyup"
+        @keydown.enter.prevent.stop="handleKeyup"
         :class="[
           'pi-input',
            size ? `pi-input--${size}` : ''
@@ -35,8 +35,8 @@
         tabindex="0"
         :aria-pressed="pwdVisible"
         @click.stop="handlePwdVisible"
-        @keydown.stop.prevent.enter="handlePwdVisible"
-        @keydown.stop.prevent.space="handlePwdVisible"
+        @keydown.enter.prevent.stop="handlePwdVisible"
+        @keydown.space.prevent.stop="handlePwdVisible"
         class="pi-input-toggle-reveal-btn"
       >
         <span v-show="pwdVisible" :title="t('input.hide')">
@@ -61,8 +61,8 @@
         role="button"
         tabindex="0"
         @click.stop="handleClearInput"
-        @keydown.stop.prevent.enter="handleClearInput"
-        @keydown.stop.prevent.space="handleClearInput"
+        @keydown.enter.prevent.stop="handleClearInput"
+        @keydown.space.prevent.stop="handleClearInput"
         class="pi-input-clear-btn"
       >
         <span aria-hidden="true">✖</span>

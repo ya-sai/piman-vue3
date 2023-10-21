@@ -9,6 +9,7 @@ import PiInput from "./Input/PiInput.vue";
 import PiMsg from "./Msg/PiMsg.vue";
 import PiPagination from "./Pagination/PiPagination.vue";
 import PiRadio from "./Radio/PiRadio.vue";
+import PiSelect from "./Select/PiSelect.vue";
 import PiSwitch from "./Switch/PiSwitch.vue";
 import PiTabs from "./Tabs/PiTabs.vue";
 import PiTabPanel from "./Tabs/PiTabPanel.vue";
@@ -25,6 +26,7 @@ export {
   PiMsg,
   PiPagination,
   PiRadio,
+  PiSelect,
   PiSwitch,
   PiTabs,
   PiTabPanel

@@ -1,19 +1,39 @@
-import { onMounted, onUnmounted } from "vue";
+// https://runthatline.com/how-to-detect-outside-click-with-vue-3/
 
-export default function (element: HTMLElement, cb: Function) {
-  const clickOutside = (e: any) => {
-    const target = e.target as HTMLElement;
-    if (target && !element.contains(target)) {
-      cb()
+import { onMounted, onBeforeUnmount } from 'vue'
+
+export default function useClickOutside(
+  component,
+  callback,
+  excludeComponent
+) {
+  // fail early if any of the required params is missing
+  if (!component) {
+    throw new Error('A target component has to be provided.')
+  }
+  
+  if (!callback) {
+    throw new Error('A callback has to be provided.')
+  }
+
+  const listener = (event) => {
+    if (
+      event.target === component.value ||
+      event.composedPath().includes(component.value) ||
+      event.target === excludeComponent ||
+      event.composedPath().includes(excludeComponent)
+    ) {
+      return
     }
-  };
-
+    if (typeof callback === 'function') {
+      callback()
+    }
+  }
   onMounted(() => {
-    window.addEventListener("click", clickOutside);
-  });
+    window.addEventListener('click', listener)
+  })
 
-  onUnmounted(() => {
-    window.removeEventListener("click", clickOutside);
-  });
-
+  onBeforeUnmount(() => {
+    window.removeEventListener('click', listener)
+  })
 }

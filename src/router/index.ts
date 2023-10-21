@@ -53,6 +53,11 @@ const routes = [
         component: () => import('@/views/demo/DemoRadio.vue')
       },
       {
+        path: '/select',
+        name: 'demo-select',
+        component: () => import('@/views/demo/DemoSelect.vue')
+      },
+      {
         path: '/switch',
         name: 'demo-switch',
         component: () => import('@/views/demo/DemoSwitch.vue')
