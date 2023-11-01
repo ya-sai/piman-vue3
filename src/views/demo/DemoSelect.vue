@@ -303,6 +303,10 @@
           v-model="valueM"
           :options="options"
           multiple
+          theme="primary"
+          a11y
+          size="large"
+          showClear
         >
           <template v-slot:prefix>前綴插槽</template>
           <template v-slot:affix>後綴插槽</template>
