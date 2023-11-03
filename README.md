@@ -46,4 +46,7 @@
 以做為 Piman 越來越好的參考，並且幫助到更多的使用者。
 
 ## ❗ Copyright and license 
-Licensed under the [Apache 2.0 License](https://github.com/ya-sai/piman-vue3/blob/main/LICENSE).
+Licensed under the [Apache 2.0 License](https://github.com/ya-sai/piman-vue3/blob/main/LICENSE)  
+
+## ❤️ Supporter
+- [Gitbook](https://www.gitbook.com/)  
