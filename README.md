@@ -49,4 +49,5 @@
 Licensed under the [Apache 2.0 License](https://github.com/ya-sai/piman-vue3/blob/main/LICENSE)  
 
 ## ❤️ Supporter
-- [Gitbook](https://www.gitbook.com/)  
+- [Gitbook](https://www.gitbook.com/)
+- [![Deployed on Zeabur](https://zeabur.com/deployed-on-zeabur-dark.svg)](https://zeabur.com?referralCode=piman-a11y&utm_source=piman-a11y)  
