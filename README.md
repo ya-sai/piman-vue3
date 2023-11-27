@@ -19,12 +19,12 @@
 | Checkbox | `PiCheckbox.vue` | ✅ |
 | Dropdown | `BpaDropdown.vue` |  |
 | Form | `BpaForm.vue`、`BpaFormItem.vue`、套件[async-validator](https://github.com/yiminghe/async-validator) |  |
-| Input | `BpaInput.vue` ||
+| Input | `BpaInput.vue` | ✅ |
 | Msg | `BpaMsg.vue`、`BpaMsg.ts` |  |
-| Pagination | `BpaPagination.vue` ||
+| Pagination | `BpaPagination.vue` | ✅ |
 | Popover |`BpaPopover.vue`||
 | Radio |`PiRadio.vue`| ✅ |
-| Select |`BpaSelect.vue`|
+| Select |`BpaSelect.vue`| ✅ |
 | Switch |`PiSwitch.vue`| ✅ |
 | Tabs | `PiTabPanel.vue`、`PiTabs.vue` | ✅ |
 | Tooltip | `BpaTooltip.vue` |
@@ -50,4 +50,3 @@ Licensed under the [Apache 2.0 License](https://github.com/ya-sai/piman-vue3/blo
 
 ## ❤️ Supporter
 - [Gitbook](https://www.gitbook.com/)
-- [![Deployed on Zeabur](https://zeabur.com/deployed-on-zeabur-dark.svg)](https://zeabur.com?referralCode=piman-a11y&utm_source=piman-a11y)  
