@@ -5,7 +5,7 @@
 
 [前往 Piman-vue3 展示頁](https://ya-sai.github.io/piman-vue3/demo/#/)
 
-[前往 Piman 網站](https://piman.cc/)
+[前往 Piman 網站](https://bpio.gitbook.io/piman)
 
 ![image](https://badgen.net/badge/vue/3.x/green) ![image](https://badgen.net/badge/nodejs/v18/red) ![image](https://badgen.net/badge/license/Apache-2.0/orange) ![image](https://badgen.net/badge/PRs/welcome/green) ![image](https://badgen.net/badge/Typescript/5.1.6/blue) 
 
@@ -39,14 +39,14 @@
 製作中
 
 ## 😎 成為貢獻者
-我們正在招募貢獻者幫助我們改善 Piman，如果您有興趣，請先至 [Contributing Guide](https://github.com/ya-sai/piman-vue3/blob/main/CONTRIBUTING.md) 以及 Developer Guide(製作中)，若有興趣，請來信至 [piman@bluepalnet.com.tw](mailto:piman@bluepalnet.com.tw)。
+我們正在招募貢獻者幫助我們改善 Piman，如果您有興趣，請先至 [Contributing Guide](https://github.com/ya-sai/piman/blob/main/.github/CONTRIBUTING.md) 以及 [Developer Guide](https://bpio.gitbook.io/piman/dev-guide) ，若有興趣，請來信至 [piman@bluepalnet.com.tw](mailto:piman@bluepalnet.com.tw)。
 
 ## 💬 體驗調查
-我們非常希望能接收到您[對 Piman 的感受或使用心得](https://app.ballparkhq.com/record/c8c3d48f-7efc-4f3e-8e1d-7b77c14b2a0e)，
-以做為 Piman 越來越好的參考，並且幫助到更多的使用者。
+我們非常希望能接收到您[對 Piman 的感受或使用心得](https://bpio.gitbook.io/piman/about#contact)，
+以作為 Piman 越來越好的參考，並且幫助到更多的使用者。
 
 ## ❗ Copyright and license 
-Licensed under the [Apache 2.0 License](https://github.com/ya-sai/piman-vue3/blob/main/LICENSE)  
+Licensed under the [Apache 2.0 License](https://github.com/ya-sai/piman/blob/main/LICENSE).
 
 ## ❤️ Supporter
 - [Gitbook](https://www.gitbook.com/)
